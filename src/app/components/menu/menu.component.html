@@ -1,1 +1,24 @@
-<p>menu works!</p>
+<nav>
+    <ul>
+      <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
+        Usuarios
+      </li>
+  
+      <li [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()">
+        Usuario Nuevo
+      </li>
+  
+      <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()">
+        Registro
+      </li>
+  
+      <li [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()">
+        Login
+      </li>
+
+      <li *ngIf="adminServicio.isLogged()" (click)="onClickLogout()">
+        Logout
+    </li>
+  
+    </ul>
+  </nav>
