@@ -19,7 +19,10 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "bootstrap": "^5.3.0",
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+>>>>>>> 48c655e (formulario añadir nuevo usuario terminado)
     "dayjs": "^1.11.9",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

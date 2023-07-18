@@ -1,1 +1,8 @@
-<p>perfil works!</p>
+<div>
+    <div class="usuario mb-2">
+        <p>{{usuario.id}}</p>
+        <h3>{{usuario.nombre}}, {{usuario.apellidos}}</h3>
+        <p>Email: {{usuario.email}}</p>
+        <p>Telefono: {{usuario.telefono}}</p>
+        <p>Fecha de alta: {{usuario.fecha_alta | date: "dd-MM-YYYY"}}</p>
+        <p>Departamento: {{usuario.departamento}}</p>
