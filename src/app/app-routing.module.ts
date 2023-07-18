@@ -8,9 +8,9 @@ import { RegistroComponent } from './pages/administradores/registro/registro.com
 import { LoginComponent } from './pages/administradores/login/login.component';
 
 const routes: Routes = [
+  { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
   { path: 'usuarios', component: ListaUsuariosComponent },
   { path: 'usuarios/:idUsuario', component: PerfilComponent },
-  { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
