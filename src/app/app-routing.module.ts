@@ -8,13 +8,12 @@ import { RegistroComponent } from './pages/administradores/registro/registro.com
 import { LoginComponent } from './pages/administradores/login/login.component';
 
 const routes: Routes = [
-  { path: 'usuarios', component: ListaUsuariosComponent },
-  { path: 'usuarios/:usuarioId', component: PerfilComponent },
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
-  { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
+  { path: 'usuarios', component: ListaUsuariosComponent },
+  { path: 'usuarios/:idUsuario', component: PerfilComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'login', component: LoginComponent },
-
 ];
 
 @NgModule({
