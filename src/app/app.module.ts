@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ListaUsuariosComponent } from './pages/usuarios/lista-usuarios/lista-usuarios.component';
 import { NuevoUsuarioComponent } from './pages/usuarios/nuevo-usuario/nuevo-usuario.component';
 import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-usuario.component';
@@ -15,7 +14,6 @@ import { MenuComponent } from './components/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UsuariosComponent,
     ListaUsuariosComponent,
     NuevoUsuarioComponent,
     EditarUsuarioComponent,
