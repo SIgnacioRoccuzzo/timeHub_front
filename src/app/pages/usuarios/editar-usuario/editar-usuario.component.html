@@ -19,7 +19,7 @@
         <label class="form-label">Teléfono</label>
         <input type="text" class="form-control" formControlName="telefono">
     </div>
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="!adminServicio.isLogged()">
         <label class="form-label">Password</label>
         <input type="password" class="form-control" formControlName="password">
     </div>
