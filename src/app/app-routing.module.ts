@@ -9,7 +9,7 @@ import { LoginComponent } from './pages/administradores/login/login.component';
 
 const routes: Routes = [
   { path: 'usuarios', component: ListaUsuariosComponent },
-  { path: 'usuarios/:usuarioId', component: PerfilComponent },
+  { path: 'usuarios/:idUsuario', component: PerfilComponent },
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'registro', component: RegistroComponent },

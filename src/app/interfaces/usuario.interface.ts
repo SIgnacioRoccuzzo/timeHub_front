@@ -1,4 +1,5 @@
 export interface Usuario {
+    id: number,
     nombre: string,
     apellidos: string,
     dni: string,
@@ -7,5 +8,5 @@ export interface Usuario {
     telefono: string,
     fecha_alta: Date,
     estado: boolean,
-    departamento: number
+    departamento: string
 }
