@@ -1,4 +1,8 @@
 <div>
-    <h2>nombre proyecto: {{proyecto}}</h2>
-    <p>Descripcion: {{proyecto}}</p>
+    <h2>nombre proyecto: {{nombreProyecto}}</h2>
+    <p>Horas dedicadas el dia{{fecha}}: {{horasDedicadas}}</p>
+</div>
+<div>
+    <label for="">Filtrar por fecha</label>
+    <input (change)="cambioFecha($event)" type="date">
 </div>
