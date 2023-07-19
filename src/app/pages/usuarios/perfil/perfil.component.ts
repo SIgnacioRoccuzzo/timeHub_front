@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-import { Usuario } from 'src/app/interfaces/usuario.interface';
-=======
+
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Proyecto } from 'src/app/interfaces/proyecto.interface';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { UsuariosService } from 'src/app/services/usuarios.service';
->>>>>>> feature/perfil_usuario
 
 
 @Component({
@@ -16,32 +12,8 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent {
-<<<<<<< HEAD
-  usuario: Usuario
-  timer: Date
-
-  constructor() {
-    this.timer = new Date();
-    this.usuario = {
-      id: 0,
-      nombre: '',
-      apellidos: '',
-      dni: '',
-      email: '',
-      password: '',
-      telefono: '',
-      fecha_alta: this.timer,
-      estado: true,
-      departamento: ''
-    }
-  }
-
-
-=======
-  usuarioServices = inject(UsuariosService);
-  activatedRoute = inject(ActivatedRoute);
->>>>>>> feature/perfil_usuario
-
+  usuariosService = inject(UsuariosService)
+  activatedRoute = inject(ActivatedRoute)
 
   timer: Date
   usuario: Usuario
@@ -70,10 +42,10 @@ export class PerfilComponent {
   async ngOnInit() {
     const fecha = '2023-07-17'
     this.activatedRoute.params.subscribe(async params => {
-      this.usuario = await this.usuarioServices.getById(params['idUsuario']);
+      this.usuario = await this.usuariosService.getById(params['idUsuario']);
       console.log(this.usuario)
 
-      this.proyecto = await this.usuarioServices.getProyectos(params['idUsuario'], fecha)
+      this.proyecto = await this.usuariosService.getProyectos(params['idUsuario'], fecha)
       console.log('proyecto', this.proyecto)
     })
 
