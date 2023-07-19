@@ -13,9 +13,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { DatosPerfilComponent } from './pages/usuarios/Perfil/components/datos-perfil/datos-perfil.component';
-import { ProyectosComponent } from './pages/usuarios/Perfil/components/proyectos/proyectos.component';
-import { HorasComponent } from './pages/usuarios/Perfil/components/horas/horas.component';
+import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-perfil/datos-perfil.component';
+import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
+import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
 
 @NgModule({
   declarations: [
