@@ -4,4 +4,7 @@
         </canvas>
     </div>
     <button class="btn btn.primary" (click)="randomize()">Update</button>
+    <h1>Control de horas de trabajo</h1>
+    <p>Horas trabajadas: {{ horas_dedicadas }}</p>
+    <button (click)="toggleTimer($event)">{{ timerActive ? 'Pausar' : 'Reanudar' }} horas</button>
 </div>
