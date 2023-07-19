@@ -1,1 +1,3 @@
-<p>horas works!</p>
+<h1>Control de horas de trabajo</h1>
+<p>Horas trabajadas: {{ horas_dedicadas }}</p>
+<button (click)="toggleTimer($event)">{{ timerActive ? 'Pausar' : 'Reanudar' }} horas</button>
