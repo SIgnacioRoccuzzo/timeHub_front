@@ -11,12 +11,8 @@ const routes: Routes = [
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
   { path: 'usuarios', component: ListaUsuariosComponent },
   { path: 'usuarios/:idUsuario', component: PerfilComponent },
-<<<<<<< HEAD
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
-=======
->>>>>>> feature/perfil_usuario
   { path: 'registro', component: RegistroComponent },
-  { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'login', component: LoginComponent },
 ];
 
