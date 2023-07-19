@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import * as dayjs from 'dayjs';
+import { AdministradoresService } from 'src/app/services/administradores.service';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -16,6 +17,7 @@ export class EditarUsuarioComponent {
   //Services
   activatedRoute = inject(ActivatedRoute);
   usuariosService = inject(UsuariosService);
+  adminServicio = inject(AdministradoresService)
 
   constructor() {
     this.idUsuario = 0;

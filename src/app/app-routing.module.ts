@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
-
 ];
 
 @NgModule({

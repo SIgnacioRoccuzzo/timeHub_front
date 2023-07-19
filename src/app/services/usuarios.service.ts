@@ -1,16 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Usuario } from '../interfaces/usuario.interface';
 import { firstValueFrom } from 'rxjs';
+import { Usuario } from '../interfaces/usuario.interface';
+import { Proyecto } from '../interfaces/proyecto.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-
-  private httpClient = inject(HttpClient);
-  private baseUrl: string;
-
+  private httpClient = inject(HttpClient)
+  private baseUrl: string
 
 
   constructor() {
@@ -23,6 +22,8 @@ export class UsuariosService {
       this.httpClient.get<Usuario[] | any>(this.baseUrl)
     )
   };
+
+  //(formulario añadir nuevo usuario terminado)
   create(formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
       this.httpClient.post<Usuario | any>(this.baseUrl, formValue)
@@ -44,6 +45,11 @@ export class UsuariosService {
     );
   };
 
+  getProyectos(idUsuario: number, fecha: string): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${idUsuario}/fecha/${fecha}`)
+    );
+  }
 
 }
 
