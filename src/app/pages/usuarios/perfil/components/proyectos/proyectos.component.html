@@ -1,8 +1,14 @@
 <div>
-    <h2>nombre proyecto: {{nombreProyecto}}</h2>
-    <p>Horas dedicadas el dia{{fecha}}: {{horasDedicadas}}</p>
+    <h2>Control de horas:</h2>
+
+    <input class="input-group mb-3" (change)="cambioFecha($event)" type="date">
 </div>
+
 <div>
-    <label for="">Filtrar por fecha</label>
-    <input (change)="cambioFecha($event)" type="date">
+    <h2>{{nombreProyecto}}</h2>
+    <p>Horas dedicadas el dia {{fecha| date: "dd-MM-YYYY"}}:</p>
+    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+        aria-valuemax="100">
+        <div class="progress-bar w-75">{{horasDedicadas}}h</div>
+    </div>
 </div>

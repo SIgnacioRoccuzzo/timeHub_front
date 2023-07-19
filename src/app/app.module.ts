@@ -16,6 +16,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-perfil/datos-perfil.component';
 import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
 import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.c
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

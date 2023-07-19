@@ -12,6 +12,7 @@ export class DatosPerfilComponent {
   usuariosService = inject(UsuariosService)
   activatedRoute = inject(ActivatedRoute)
 
+
   timer: Date
   usuario: Usuario
 
