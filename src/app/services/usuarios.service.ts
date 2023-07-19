@@ -50,6 +50,11 @@ export class UsuariosService {
       this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${idUsuario}/fecha/${fecha}`)
     );
   }
+  getbyDate(idUsuario: number, horas_dedicadas: number): Promise<Usuario | any> {
+    return firstValueFrom(
+      this.httpClient.get<Usuario | any>(`${this.baseUrl}/${idUsuario}/${horas_dedicadas}`)
+    )
+  }
 
 }
 
