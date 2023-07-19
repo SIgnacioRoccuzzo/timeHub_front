@@ -13,20 +13,18 @@ export class ProyectosComponent {
   usuariosService = inject(UsuariosService)
   activatedRoute = inject(ActivatedRoute)
 
-  proyecto: Proyecto[]
+  proyecto: []
 
   constructor() {
-    this.proyecto = [{
-      nombre: '',
-      descripcion: ''
-    }]
+    this.proyecto = []
   }
 
   async ngOnInit() {
     const fecha = '2023-07-17'
     this.activatedRoute.params.subscribe(async params => {
-      this.proyecto = await this.usuariosService.getProyectos(params['idUsuario'], fecha)
-      console.log('proyecto', this.proyecto)
+      const datosProyecto = await this.usuariosService.getProyectos(params['idUsuario'], fecha)
+      const nombre = datosProyecto[0].proyecto
+      console.log(datosProyecto)
     })
 
 
