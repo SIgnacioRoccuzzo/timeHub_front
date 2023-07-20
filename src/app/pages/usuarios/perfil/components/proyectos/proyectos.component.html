@@ -2,7 +2,7 @@
     <h2>Control de horas:</h2>
 </div>
 
-<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+<select (change)="cambioMes($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option selected>Selecciona un mes</option>
     <option value="1">Enero</option>
     <option value="2">Febrero</option>
@@ -20,7 +20,8 @@
 </select>
 <select (change)="cambioProyecto($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option selected>selecciona un proyecto</option>
-    <option value="" *ngFor="let nombreProyecto of nombresProyectos">{{nombreProyecto}}</option>
+    <option [value]=idProyecto *ngFor="let nombreProyecto of nombresProyectos let idProyecto of idProyectos">
+        {{nombreProyecto}} </option>
 
 </select>
 

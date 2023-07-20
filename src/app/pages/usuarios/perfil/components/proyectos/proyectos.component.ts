@@ -22,7 +22,11 @@ export class ProyectosComponent {
   nombre: any
   horasDedicadas: any[] = []
   fecha: any[] = []
-  idProyecto: number = 0
+  idProyectos: any[] = []
+  mes: any
+
+
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -47,29 +51,35 @@ export class ProyectosComponent {
 
   async ngOnInit() {
     const proyectos = await this.proyectosService.getProyectos()
-    console.log(proyectos)
+
+
     for (let proyecto of proyectos) {
       this.nombresProyectos.push(proyecto.nombre)
+      this.idProyectos.push(proyecto.id)
+      console.log(this.idProyectos)
     }
-    console.log(this.nombresProyectos)
-
 
 
 
   }
-  async cambioProyecto($event: any) {
-    this.idProyecto = $event.target.value
-    console.log('id proyecto', this.idProyecto)
+  cambioMes($event: any) {
+    this.mes = $event.target.value
 
-    this.registros = await this.proyectosService.getRegistro(5, this.idProyecto, 7)
-    console.log(this.registros)
+  }
+  async cambioProyecto($event: any) {
+    const idProyecto = $event.target.value
+    console.log('id proyecto', idProyecto)
+
+    this.activatedRoute.params.subscribe(async params => {
+      this.registros = await this.proyectosService.getRegistro(params['idUsuario'], idProyecto, this.mes)
+      console.log('params', params['idUsuario'])
+    })
+
     for (let registro of this.registros) {
       /*  this.nombreProyecto.push(registro.proyecto) */
       this.fecha.push(dayjs(registro.fecha).format('DD'))
       this.horasDedicadas.push(registro.horas_dedicadas)
       this.nombre = registro.nombre
-
-
 
       this.barChartData = {
         labels: this.fecha,
@@ -77,10 +87,12 @@ export class ProyectosComponent {
           { data: this.horasDedicadas, label: this.nombre },
         ]
       };
-
     }
 
+    this.horasDedicadas = []
+    this.fecha = []
 
+    console.log('mes', this.mes)
   }
 
 
