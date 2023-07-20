@@ -1,14 +1,13 @@
 <div>
     <h2>Control de horas:</h2>
-
-    <input class="input-group mb-3" (change)="cambioFecha($event)" type="date">
 </div>
 
 <div>
-    <h2>{{nombreProyecto}}</h2>
-    <p>Horas dedicadas el dia {{fecha| date: "dd-MM-YYYY"}}:</p>
-    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
-        aria-valuemax="100">
-        <div class="progress-bar w-75">{{horasDedicadas}}h</div>
+    <div>
+        <div style="display: block">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+            </canvas>
+        </div>
+        <button class="btn btn.primary" (click)="randomize()">Update</button>
     </div>
 </div>
