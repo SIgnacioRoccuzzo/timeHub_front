@@ -23,9 +23,9 @@ export class ProyectosService {
     )
   }
 
-  getRegistro(idUsuario: number, mes: number): Promise<[]> {
+  getRegistro(idUsuario: number, idProyecto: number, mes: number): Promise<[]> {
     return firstValueFrom(
-      this.httpClient.get<[]>(`${this.baseUrl}/${idUsuario}/${mes}`)
+      this.httpClient.get<[]>(`${this.baseUrl}/${idUsuario}/${idProyecto}/${mes}`)
     )
 
   }

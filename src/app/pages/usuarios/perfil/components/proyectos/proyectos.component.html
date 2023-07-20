@@ -2,12 +2,35 @@
     <h2>Control de horas:</h2>
 </div>
 
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option selected>Selecciona un mes</option>
+    <option value="1">Enero</option>
+    <option value="2">Febrero</option>
+    <option value="3">Marzo</option>
+    <option value="4">Abril</option>
+    <option value="5">Mayo</option>
+    <option value="6">Junio</option>
+    <option value="7">Julio</option>
+    <option value="8">Agosto</option>
+    <option value="9">Septiembre</option>
+    <option value="10">Octubre</option>
+    <option value="11">Noviembre</option>
+    <option value="12">Diciembre</option>
+
+</select>
+<select (change)="cambioProyecto($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option selected>selecciona un proyecto</option>
+    <option value="" *ngFor="let nombreProyecto of nombresProyectos">{{nombreProyecto}}</option>
+
+</select>
+
+
 <div>
     <div>
         <div style="display: block">
             <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
             </canvas>
         </div>
-        <button class="btn btn.primary" (click)="randomize()">Update</button>
+        <button class="btn btn.primary">Update</button>
     </div>
 </div>
