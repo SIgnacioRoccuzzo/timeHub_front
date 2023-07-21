@@ -25,7 +25,7 @@
 <select (change)="cambioProyecto($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option selected>selecciona un proyecto</option>
     <option [value]=idProyecto *ngFor="let nombreProyecto of nombresProyectos let idProyecto of idProyectos">
-        {{nombreProyecto}} </option>
+        {{nombreProyecto}}</option>
 
 </select>
 
