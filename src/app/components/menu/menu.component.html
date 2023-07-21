@@ -10,8 +10,11 @@
       </a>
 
       <ul class="nav nav-pills">
+        <li class="nav-item"><a [routerLink]="['/usuarios/usuario._id']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link active" aria-current="page">Mi
+            perfil</a> </li>
         <li class="nav-item"><a [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()" href="#"
-            class="nav-link active" aria-current="page">Lista usuarios</a></li>
+            class="nav-link">Lista Usuarios</a></li>
         <li class="nav-item"><a [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()" href="#"
             class="nav-link">Añadir usuario</a></li>
         <li class="nav-item"><a [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()" href="#"
@@ -20,6 +23,7 @@
             class="nav-link">Login</a></li>
         <li class="nav-item"><a *ngIf="adminServicio.isLogged()" (click)="onClickLogout()" href="#"
             class="nav-link">Logout</a></li>
+
       </ul>
     </header>
   </div>
