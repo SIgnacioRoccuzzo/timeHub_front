@@ -1,12 +1,36 @@
-input.ng-valid.ng-touched {
-    border: 2px solid green;
+section {
+    background: url(../../../../assets/image/login-bg2.jpg) no-repeat;
+    background-size: cover;
+    background-position: 25% 30%;
+    height: 100vh;
+    color: aliceblue;
 }
 
+section form {
+    margin: 10% auto;
+    width: 25vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 1.25em;
+}
+
+section h2 {
+    font-family: 'VT323', monospace;
+    font-size: 55px;
+}
+
+section .copyright {
+    font-family: 'VT323', monospace;
+}
+
+/* input.ng-valid.ng-touched {
+    border: 2px solid green;
+} */
 
 input.ng-invalid.ng-touched {
-    border: 2px solid hotpink;
+    border: 2px solid red;
 }
 
 .error {
-    color: hotpink;
+    color: red;
 }

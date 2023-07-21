@@ -30,21 +30,6 @@ export class LoginComponent {
     this.mensajeError = false
   }
 
-
-  // async onSubmit() {
-  //   const response = await this.adminServicio.getLogin(this.formulario.value);
-  //   console.log(response);
-
-  //   if (response.fatal) {
-  //     return alert(response.fatal)
-  //   }
-
-  //   localStorage.setItem('admin_token', response.token)
-  //   this.router.navigate(['/usuarios'])
-  // }
-
-
-
   async onSubmit() {
     const response = await this.adminServicio.getLogin(this.formulario.value);
     console.log(response);

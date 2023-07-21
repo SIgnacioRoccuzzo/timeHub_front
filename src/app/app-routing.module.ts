@@ -6,6 +6,7 @@ import { NuevoUsuarioComponent } from './pages/usuarios/nuevo-usuario/nuevo-usua
 import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-usuario.component';
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
+import { LoginAdminGuard } from './guards/login-admin.guards';
 
 const routes: Routes = [
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
@@ -13,7 +14,10 @@ const routes: Routes = [
   { path: 'usuarios/:idUsuario', component: PerfilComponent },
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login', component: LoginComponent,
+    canActivate: [LoginAdminGuard]
+  },
 ];
 
 @NgModule({
