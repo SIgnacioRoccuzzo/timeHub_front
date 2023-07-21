@@ -22,7 +22,7 @@ export const loginGuardUser = () => {
         return true;
     } else {
 
-        router.navigate(['usuarios', '/usuario._id'])
+        router.navigate(['usuarios', 'perfil'])
 
         return false;
     }

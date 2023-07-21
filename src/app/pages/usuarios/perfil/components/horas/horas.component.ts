@@ -4,7 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegistroHorasService } from 'src/app/services/registro-horas.service';
-import { UserProyecto } from 'src/app/interfaces/userProyecto.interface';
+
 
 
 @Component({
@@ -15,10 +15,13 @@ import { UserProyecto } from 'src/app/interfaces/userProyecto.interface';
 export class HorasComponent {
 
 
+<<<<<<< HEAD
   private interval: any;
   private tiempoTotal = 0;
   pausado: boolean = true;
   registrosHoras: UserProyecto[] = [];
+=======
+>>>>>>> f4a976b (he conseguido que se visualice el perfil)
   //Services
   registroService = inject(RegistroHorasService);
   activatedRoute = inject(ActivatedRoute);
@@ -103,13 +106,13 @@ export class HorasComponent {
     return time.toString().padStart(2, '0');
   }
 
-  async getRegistrosByDate(date: Date, idUsuario: number): Promise<void> {
-    try {
-      this.registrosHoras = await this.registroService.getByDate(idUsuario, date);
-    } catch (error) {
-      console.log('Error al obtener los registros de horas', error);
-    }
-  }
+  /*  async getRegistrosByDate(date: Date, idUsuario: number): Promise<void> {
+     try {
+       this.registrosHoras = await this.registroService.getByDate(idUsuario, date);
+     } catch (error) {
+       console.log('Error al obtener los registros de horas', error);
+     }
+   } */
 
   ngOnDestroy(): void {
     clearInterval(this.interval);

@@ -35,7 +35,7 @@ export class DatosPerfilComponent {
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
-      this.usuario = await this.usuariosService.getById(params['idUsuario']);
+      this.usuario = await this.usuariosService.getByprofile();
       console.log(this.usuario)
     })
 

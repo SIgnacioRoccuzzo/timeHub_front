@@ -26,4 +26,20 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(clonedRequest);
   }
+
+
+  interceptUser(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
+    let clonedRequest = request;
+
+    if (localStorage.getItem('user_token')) {
+      clonedRequest = request.clone({
+        setHeaders: {
+          'Authorization': localStorage.getItem('user_token')!
+        }
+      })
+    }
+
+    return next.handle(clonedRequest);
+  }
 }
