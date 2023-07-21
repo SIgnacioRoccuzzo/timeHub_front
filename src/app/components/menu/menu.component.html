@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="adminServicio.isLogged()">
     <ul>
       <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
         Usuarios

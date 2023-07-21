@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -62,21 +63,46 @@ export class NuevoUsuarioComponent {
   }
 
 
-  async onSubmit() {
+  async onSubmit(): Promise<any> {
     const response = await this.usuarioServices.create(this.formulario.value);
 
     if (response.fatal) {
-      // Error en la inserción
-      console.log(response.fatal);
-      return alert('Error en el registro.');
+
+      if (response.fatal.includes('usuarios.dni_UNIQUE')) {
+        return Swal.fire({
+          title: 'Error!',
+          text: 'DNI ya existe',
+          icon: 'error'
+        })
+
+      } else if (response.fatal.includes('usuarios.telefono_UNIQUE')) {
+        return Swal.fire({
+          title: 'Error!',
+          text: 'Telefono ya existe',
+          icon: 'error'
+        })
+
+      } else if (response.fatal.includes('usuarios.email_UNIQUE')) {
+
+        return Swal.fire({
+          title: 'Error!',
+          text: 'Correo ya existe',
+          icon: 'error'
+        })
+      }
+    } else {
+      Swal.fire({
+        title: 'Success!',
+        text: 'creación de nuevo usuario con éxito',
+        icon: 'success'
+      })
+
+      this.router.navigate(['/usuarios']);
     }
 
-    // Inserción correcta
-    this.router.navigate(['/usuarios']);
   }
 
   checkError(field: string, error: string) {
-    // 因为两个都是显示的true/false
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
 
@@ -101,8 +127,6 @@ export class NuevoUsuarioComponent {
     }
 
   }
-
-
 
 
 
