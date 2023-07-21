@@ -1,16 +1,18 @@
-<div class="row g-0 bg-body-secondary position-relative">
-    <div class="col-md-4 mb-md-0 p-md-4">
-        <img src="https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1066440767.1687382072&semt=sph"
-            class="w-100">
+<!-- Three columns of text below the carousel -->
+<div class="row">
+    <div class="col-3">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+            src="https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1066440767.1687382072&semt=sph"
+            alt="" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+        >
     </div>
-    <div class="col-md-6 p-4 ps-md-0">
-        <h3 class="mt-0 text-center">{{usuario.nombre}} {{usuario.apellidos}}</h3>
-
-
+    <div class="col-9">
+        <h2 class="fw-normal">{{usuario.nombre}} {{usuario.apellidos}}</h2>
+        <hr>
         <p> <i class="fa-regular fa-envelope"></i> {{usuario.email}}
         </p>
         <p><i class="fa-solid fa-phone"></i> {{usuario.telefono}}</p>
         <p><i class="fa-regular fa-calendar"></i> Fecha de alta: {{usuario.fecha_alta | date: "dd-MM-YYYY"}}</p>
         <p><i class="fa-solid fa-pen-nib"></i> Departamento: {{usuario.departamento}}</p>
-    </div>
-</div>
+        
+    </div><!-- /.col-lg-4 -->
