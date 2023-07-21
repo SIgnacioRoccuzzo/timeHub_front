@@ -51,9 +51,7 @@ export class LoginUsuariosComponent {
 
       localStorage.setItem('user_token', response.token)
 
-      this.router.navigate(['usuarios', '/perfil'])
-      console.log(this.router)
-
+      this.router.navigate(['usuarios', 'perfil'])
 
     }
   }

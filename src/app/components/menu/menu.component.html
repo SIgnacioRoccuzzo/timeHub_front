@@ -8,7 +8,6 @@
       Usuario Nuevo
     </li>
 
-
     <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged() && router.url === '/login'">
       Registro
     </li>
@@ -17,8 +16,8 @@
       Login
     </li>
 
-
-    <li [routerLink]="['/login/user']" *ngIf="router.url !== '/login' && !usuariosService.isLoggedUser()">
+    <li [routerLink]="['/login/user']"
+      *ngIf="!adminServicio.isLogged() && router.url !== '/login' && !usuariosService.isLoggedUser()">
       Login User
     </li>
     <li *ngIf="usuariosService.isLoggedUser()" (click)="onClickLogoutUser()">

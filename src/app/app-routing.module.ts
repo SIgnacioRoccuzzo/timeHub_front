@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent, canActivate: [loginGuard] },
   { path: 'login/user', component: LoginUsuariosComponent },
   { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [loginGuard] },
-  { path: 'usuarios/perfil', component: PerfilComponent },
+  { path: 'usuarios/perfil', component: PerfilComponent, canActivate: [loginGuardUser] },
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent, canActivate: [loginGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },

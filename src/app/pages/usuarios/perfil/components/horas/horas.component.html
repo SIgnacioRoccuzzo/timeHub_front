@@ -4,23 +4,4 @@
         </canvas>
     </div>
     <button class="btn btn.primary" (click)="randomize()">Update</button>
-    <div>
-        <div>
-            <h2>Registro de Horas</h2>
-
-            <div *ngIf="registrosHoras.length > 0">
-                <h3>Registros de Horas</h3>
-                <ul>
-                    <li *ngFor="let registro of registrosHoras">
-                        <p>{{ registro.proyecto_id }} - {{ registro.horas_dedicadas }}</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Contador de Tiempo de Trabajo</h3>
-                <p>Tiempo total: {{ getTiempoTotal() }}</p>
-                <button (click)="togglePausa()">{{ pausado ? 'Reanudar' : 'Pausar' }}</button>
-            </div>
-        </div>
-    </div>
+</div>
