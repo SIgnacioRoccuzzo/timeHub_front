@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -65,14 +66,14 @@ export class NuevoUsuarioComponent {
   async onSubmit() {
     const response = await this.usuarioServices.create(this.formulario.value);
 
-    if (response.fatal) {
-      // Error en la inserción
-      console.log(response.fatal);
-      return alert('Error en el registro.');
-    }
+    Swal.fire({
+      title: 'Success!',
+      text: 'Se ha registrado con éxito',
+      icon: 'success'
+    })
 
     // Inserción correcta
-    this.router.navigate(['/usuarios']);
+    this.router.navigate(['/login/user']);
   }
 
   checkError(field: string, error: string) {
@@ -101,9 +102,6 @@ export class NuevoUsuarioComponent {
     }
 
   }
-
-
-
 
 
 }

@@ -27,12 +27,6 @@ export class AdministradoresService {
     )
   }
 
-  // getAllAdmin(): Promise<Administrador[]>{
-  //   return firstValueFrom(
-  //     this.httpServicio.get<Administrador[]>(this.baseUrl)
-  //   )
-  // }
-
   isLogged(): boolean {
     return localStorage.getItem('admin_token') ? true : false
   }

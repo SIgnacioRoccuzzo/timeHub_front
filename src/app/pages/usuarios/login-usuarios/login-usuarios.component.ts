@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdministradoresService } from 'src/app/services/administradores.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-usuarios',
+  templateUrl: './login-usuarios.component.html',
+  styleUrls: ['./login-usuarios.component.css']
 })
-export class LoginComponent {
-
-  formulario: FormGroup;
-  adminServicio = inject(AdministradoresService);
+export class LoginUsuariosComponent {
+  formulario: FormGroup
+  usuariosService = inject(UsuariosService);
   router = inject(Router);
 
   mensajeError: boolean
@@ -31,7 +30,7 @@ export class LoginComponent {
   }
 
   async onSubmit() {
-    const response = await this.adminServicio.getLogin(this.formulario.value);
+    const response = await this.usuariosService.getLoginUser(this.formulario.value);
     console.log(response);
 
     if (response.fatal) {
@@ -50,14 +49,17 @@ export class LoginComponent {
         icon: 'success'
       })
 
-      localStorage.setItem('admin_token', response.token)
-      this.router.navigate(['/usuarios'])
+      localStorage.setItem('user_token', response.token)
+
+      this.router.navigate(['usuarios', '/perfil'])
+      console.log(this.router)
+
+
     }
   }
-
-
   checkError(field: string, error: string) {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
-
 }
+
+

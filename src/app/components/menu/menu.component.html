@@ -1,24 +1,33 @@
 <nav>
-    <ul>
-      <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
-        Usuarios
-      </li>
-  
-      <li [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()">
-        Usuario Nuevo
-      </li>
-  
-      <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()">
-        Registro
-      </li>
-  
-      <li [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()">
-        Login
-      </li>
-
-      <li *ngIf="adminServicio.isLogged()" (click)="onClickLogout()">
-        Logout
+  <ul>
+    <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
+      Usuarios
     </li>
-  
-    </ul>
-  </nav>
+
+    <li [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()">
+      Usuario Nuevo
+    </li>
+
+
+    <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged() && router.url === '/login'">
+      Registro
+    </li>
+
+    <li [routerLink]="['/login']" *ngIf="!adminServicio.isLogged() && router.url === '/login'">
+      Login
+    </li>
+
+
+    <li [routerLink]="['/login/user']" *ngIf="router.url !== '/login' && !usuariosService.isLoggedUser()">
+      Login User
+    </li>
+    <li *ngIf="usuariosService.isLoggedUser()" (click)="onClickLogoutUser()">
+      Logout User
+    </li>
+
+    <li *ngIf="adminServicio.isLogged()" (click)="onClickLogout()">
+      Logout
+    </li>
+
+  </ul>
+</nav>
