@@ -6,6 +6,7 @@ import { NuevoUsuarioComponent } from './pages/usuarios/nuevo-usuario/nuevo-usua
 import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-usuario.component';
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 const routes: Routes = [
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
+  { path: '', component: InicioComponent },
+
 ];
 
 @NgModule({

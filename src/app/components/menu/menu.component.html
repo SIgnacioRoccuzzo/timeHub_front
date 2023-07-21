@@ -1,24 +1,32 @@
 <nav>
-    <ul>
-      <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
-        Usuarios
-      </li>
-  
-      <li [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()">
-        Usuario Nuevo
-      </li>
-  
-      <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()">
-        Registro
-      </li>
-  
-      <li [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()">
-        Login
-      </li>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a [routerLink]="['']" *ngIf="adminServicio.isLogged()" href=""
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+        <span class="fs-4">TimeHube</span>
+      </a>
 
-      <li *ngIf="adminServicio.isLogged()" (click)="onClickLogout()">
-        Logout
-    </li>
-  
-    </ul>
-  </nav>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a [routerLink]="['/usuarios/usuario._id']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link active" aria-current="page">Mi
+            perfil</a> </li>
+        <li class="nav-item"><a [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link">Lista Usuarios</a></li>
+        <li class="nav-item"><a [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link">Añadir usuario</a></li>
+        <li class="nav-item"><a [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()" href="#"
+            class="nav-link">Registro</a></li>
+        <li class="nav-item"><a [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()" href="#"
+            class="nav-link">Login</a></li>
+        <li class="nav-item"><a *ngIf="adminServicio.isLogged()" (click)="onClickLogout()" href="#"
+            class="nav-link">Logout</a></li>
+
+      </ul>
+    </header>
+  </div>
+
+
+</nav>
