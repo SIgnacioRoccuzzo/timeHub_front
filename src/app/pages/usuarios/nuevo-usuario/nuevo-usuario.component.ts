@@ -66,6 +66,7 @@ export class NuevoUsuarioComponent {
   async onSubmit(): Promise<any> {
     const response = await this.usuarioServices.create(this.formulario.value);
 
+
     if (response.fatal) {
 
       if (response.fatal.includes('usuarios.dni_UNIQUE')) {
@@ -100,6 +101,16 @@ export class NuevoUsuarioComponent {
       this.router.navigate(['/usuarios']);
     }
 
+
+    Swal.fire({
+      title: 'Success!',
+      text: 'Se ha registrado con éxito',
+      icon: 'success'
+    })
+
+    // Inserción correcta
+    this.router.navigate(['/login/user']);
+
   }
 
   checkError(field: string, error: string) {
@@ -127,7 +138,5 @@ export class NuevoUsuarioComponent {
     }
 
   }
-
-
 
 }

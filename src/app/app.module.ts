@@ -17,7 +17,10 @@ import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-p
 import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
 import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
 import { NgChartsModule } from 'ng2-charts';
+
 import { InicioComponent } from './components/inicio/inicio.component';
+
+import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { InicioComponent } from './components/inicio/inicio.component';
     DatosPerfilComponent,
     ProyectosComponent,
     HorasComponent,
-    InicioComponent
+    InicioComponent,
+
+    LoginUsuariosComponent
+
   ],
   imports: [
     BrowserModule,

@@ -21,12 +21,19 @@
             class="nav-link">Registro</a></li>
         <li class="nav-item"><a [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()" href="#"
             class="nav-link">Login</a></li>
+        <li [routerLink]="['/login/user']" *ngIf="router.url !== '/login' && !usuariosService.isLoggedUser()">
+          Login User
+        </li>
+        <li *ngIf="usuariosService.isLoggedUser()" (click)="onClickLogoutUser()">
+          Logout User
+        </li>
         <li class="nav-item"><a *ngIf="adminServicio.isLogged()" (click)="onClickLogout()" href="#"
             class="nav-link">Logout</a></li>
 
       </ul>
     </header>
   </div>
+
 
 
 </nav>

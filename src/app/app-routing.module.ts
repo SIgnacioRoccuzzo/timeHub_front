@@ -6,14 +6,20 @@ import { NuevoUsuarioComponent } from './pages/usuarios/nuevo-usuario/nuevo-usua
 import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-usuario.component';
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
+
 import { LoginAdminGuard } from './guards/login-admin.guards';
 import { InicioComponent } from './components/inicio/inicio.component';
 
+import { loginGuard, loginGuardUser } from './guards/login.guards';
+import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
+
+
 const routes: Routes = [
-  { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
-  { path: 'usuarios', component: ListaUsuariosComponent },
-  { path: 'usuarios/:idUsuario', component: PerfilComponent },
-  { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent },
+  { path: 'usuarios/nuevo', component: NuevoUsuarioComponent, canActivate: [loginGuard] },
+  { path: 'login/user', component: LoginUsuariosComponent },
+  { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [loginGuard] },
+  { path: 'usuarios/perfil', component: PerfilComponent },
+  { path: 'usuarios/editar/:idUsuario', component: EditarUsuarioComponent, canActivate: [loginGuard] },
   { path: 'registro', component: RegistroComponent },
   {
     path: 'login', component: LoginComponent,

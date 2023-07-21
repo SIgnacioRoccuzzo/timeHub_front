@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (localStorage.getItem('admin_token')) {
       clonedRequest = request.clone({
         setHeaders: {
-          'Authorization':localStorage.getItem('admin_token')!
+          'Authorization': localStorage.getItem('admin_token')!
         }
       })
     }

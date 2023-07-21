@@ -62,6 +62,7 @@ export class ProyectosComponent {
 
 
   }
+
   cambioMes($event: any) {
     this.mes = $event.target.value
 
@@ -99,12 +100,5 @@ export class ProyectosComponent {
   chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
-
-
-
-
-
-
-
 
 }

@@ -50,10 +50,15 @@ export class UsuariosService {
       this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${idUsuario}/fecha/${fecha}`)
     );
   }
-  getbyDate(idUsuario: number, horas_dedicadas: number): Promise<Usuario | any> {
+  getLoginUser(formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.get<Usuario | any>(`${this.baseUrl}/${idUsuario}/${horas_dedicadas}`)
-    )
+      this.httpClient.post<Usuario | any>(`${this.baseUrl}/login/user`, formValue)
+    );
+  }
+
+  isLoggedUser(): boolean {
+    return localStorage.getItem('user_token') ? true : false
+
   }
 
 }
