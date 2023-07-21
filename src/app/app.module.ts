@@ -17,7 +17,7 @@ import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-p
 import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
 import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
 import { NgChartsModule } from 'ng2-charts';
-import { InicioComponent } from './pages/inicio/inicio.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 
 @NgModule({

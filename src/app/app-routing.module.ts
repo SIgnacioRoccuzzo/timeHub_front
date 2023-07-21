@@ -6,7 +6,7 @@ import { NuevoUsuarioComponent } from './pages/usuarios/nuevo-usuario/nuevo-usua
 import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-usuario.component';
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
