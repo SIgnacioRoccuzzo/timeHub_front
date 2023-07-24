@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-proyectos',
@@ -15,7 +16,7 @@ export class ProyectosComponent {
   proyectos: []
   nombreProyecto: string = ''
   horasDedicadas: number = 0
-  fecha: string = ''
+  fecha: Date = new Date;
 
   constructor() {
     this.proyectos = []
@@ -24,10 +25,11 @@ export class ProyectosComponent {
   async ngOnInit() {
 
 
+
   }
 
   cambioFecha($event: any) {
-    this.fecha = $event?.target.value
+    this.fecha = $event.target.value
 
     this.activatedRoute.params.subscribe(async params => {
       const datosProyecto = await this.usuariosService.getProyectos(params['idUsuario'], this.fecha)
@@ -37,7 +39,6 @@ export class ProyectosComponent {
       console.log(this.proyectos)
 
     })
-
   }
 
 

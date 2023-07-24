@@ -29,9 +29,10 @@ export class ListaUsuariosComponent {
       console.log(error);
     }
   };
-  async borrarUser(idUsuario: number) {
-    console.log(idUsuario)
-    const usuario = await this.usuariosService.deleteUser(idUsuario);
+
+  async borrarUser(usuarioId: number) {
+    console.log(usuarioId)
+    const usuario = await this.usuariosService.deleteUser(usuarioId);
     if (!usuario.fatal) {
       const response = await this.usuariosService.getAll();
       this.usuariosService = response;

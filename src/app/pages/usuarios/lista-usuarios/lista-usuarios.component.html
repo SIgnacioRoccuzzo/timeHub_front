@@ -1,21 +1,3 @@
-<!-- <div class="row" *ngFor="let usuario of usuarios">
-    <div class="usuario mb-2">
-        <p>{{usuario.id}}</p>
-        <h3>{{usuario.nombre}}, {{usuario.apellidos}}</h3>
-        <p>Email: {{usuario.email}}</p>
-        <p>Telefono: {{usuario.telefono}}</p>
-        <p>Fecha de alta: {{usuario.fecha_alta | date: "dd-MM-YYYY"}}</p>
-        <p>Departamento: {{usuario.departamento}}</p>
-
-        <button class="btn btn-info" [routerLink]="['/usuarios', 'editar', usuario.id]">Editar</button>
-
-        <button class="btn btn-danger ms-2" (click)="borrarUser(usuario.id)">Borrar</button>
-    </div>
-
-</div> -->
-
-
-
 <table class="table">
     <thead>
         <tr>
@@ -41,7 +23,7 @@
             <td>{{usuario.fecha_alta | date: "dd-MM-YYYY"}}</td>
             <td>{{usuario.departamento}}</td>
             <td>
-                <button class="btn btn-info" [routerLink]="['/usuarios', 'editar', usuario.id]">Editar</button>
+                <button class="btn btn-info" [routerLink]="['/usuarios','editar', usuario.id]">Editar</button>
             </td>
 
             <td>

@@ -1,4 +1,5 @@
 export interface Proyecto {
     nombre: string,
-    descripcion: string
+    descripcion: string,
+    fecha: Date
 }
