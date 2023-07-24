@@ -16,22 +16,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
     let clonedRequest = request;
 
-    if (localStorage.getItem('admin_token')) {
+    if (localStorage.getItem('admins_token')) {
       clonedRequest = request.clone({
         setHeaders: {
-          'Authorization': localStorage.getItem('admin_token')!
+          'Authorization': localStorage.getItem('admins_token')!
         }
       })
     }
-
-    return next.handle(clonedRequest);
-  }
-
-
-  interceptUser(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-    let clonedRequest = request;
-
     if (localStorage.getItem('user_token')) {
       clonedRequest = request.clone({
         setHeaders: {
@@ -42,4 +33,5 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(clonedRequest);
   }
+
 }

@@ -3,4 +3,5 @@ export interface Administrador {
     apellidos: string,
     email: string,
     password: string
+    rol: string;
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
@@ -9,45 +9,42 @@ import { Proyecto } from '../interfaces/proyecto.interface';
 })
 export class UsuariosService {
   private httpClient = inject(HttpClient)
-  private baseUrl: string
+  private baseUrl: string;
 
 
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/usuarios'
   };
 
-
   getAll(): Promise<Usuario[] | any> {
     return firstValueFrom(
-      this.httpClient.get<Usuario[] | any>(this.baseUrl
-      ))
+      this.httpClient.get<Usuario[] | any>(this.baseUrl))
   };
 
-  //(formulario añadir nuevo usuario terminado)
   create(formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.post<Usuario | any>(this.baseUrl, formValue, this.createHeaders())
+      this.httpClient.post<Usuario | any>(this.baseUrl, formValue)
     );
   };
-  getById(idUsuario: number): Promise<Usuario | any> {
+  getById(usuarioId: number): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.get<Usuario | any>(`${this.baseUrl}/${idUsuario}`, this.createHeaders())
+      this.httpClient.get<Usuario | any>(`${this.baseUrl}/${usuarioId}`)
     );
   };
-  update(idUsuario: number, formValue: any): Promise<Usuario | any> {
+  update(usuarioId: number, formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.put<Usuario | any>(`${this.baseUrl}/${idUsuario}`, formValue, this.createHeaders())
+      this.httpClient.put<Usuario | any>(`${this.baseUrl}/editar/${usuarioId}`, formValue)
     );
   };
-  deleteUser(idUsuario: number): Promise<Usuario | any> {
+  deleteUser(usuarioId: number): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.delete<Usuario | any>(`${this.baseUrl}/${idUsuario}`, this.createHeaders())
+      this.httpClient.delete<Usuario | any>(`${this.baseUrl}/${usuarioId}`)
     );
   };
 
-  getProyectos(idUsuario: number, fecha: string): Promise<Proyecto | any> {
+  getProyectos(usuarioId: number, fecha: Date): Promise<Proyecto | any> {
     return firstValueFrom(
-      this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${idUsuario}/fecha/${fecha}`, this.createHeaders())
+      this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${usuarioId}/${fecha}`)
     );
   }
   getLoginUser(formValue: any): Promise<Usuario | any> {
@@ -57,17 +54,9 @@ export class UsuariosService {
   }
   getByprofile(): Promise<Usuario | any> {
     return firstValueFrom(
-      this.httpClient.get<Usuario | any>(`${this.baseUrl}/perfil`, this.createHeaders())
+      this.httpClient.get<Usuario | any>(`${this.baseUrl}/profile`)
     );
   };
-
-  createHeaders() {
-    return {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('user_token')!
-      })
-    }
-  }
 
   isLoggedUser(): boolean {
     return localStorage.getItem('user_token') ? true : false

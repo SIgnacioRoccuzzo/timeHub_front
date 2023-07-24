@@ -4,6 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegistroHorasService } from 'src/app/services/registro-horas.service';
+import { UserProyecto } from 'src/app/interfaces/userProyecto.interface';
 
 
 
@@ -15,13 +16,10 @@ import { RegistroHorasService } from 'src/app/services/registro-horas.service';
 export class HorasComponent {
 
 
-<<<<<<< HEAD
   private interval: any;
   private tiempoTotal = 0;
   pausado: boolean = true;
   registrosHoras: UserProyecto[] = [];
-=======
->>>>>>> f4a976b (he conseguido que se visualice el perfil)
   //Services
   registroService = inject(RegistroHorasService);
   activatedRoute = inject(ActivatedRoute);
@@ -76,7 +74,7 @@ export class HorasComponent {
   ngOnInit(): void {
     const date = new Date();
     const idUsuario = this.activatedRoute.snapshot.params['idUsuario'];
-    this.getRegistrosByDate(date, idUsuario);
+    /* this.getRegistrosByDate(date, idUsuario); */
     this.startContador();
   }
 

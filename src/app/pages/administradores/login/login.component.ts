@@ -32,7 +32,7 @@ export class LoginComponent {
 
   async onSubmit() {
     const response = await this.adminServicio.getLogin(this.formulario.value);
-    console.log(response);
+    console.log(response.token);
 
     if (response.fatal) {
       // return alert(response.fatal)
@@ -50,7 +50,7 @@ export class LoginComponent {
         icon: 'success'
       })
 
-      localStorage.setItem('admin_token', response.token)
+      localStorage.setItem('admins_token', response.token)
       this.router.navigate(['/usuarios'])
     }
   }

@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import * as dayjs from 'dayjs';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -14,8 +14,9 @@ import Swal from 'sweetalert2';
 })
 export class EditarUsuarioComponent {
   formulario: FormGroup;
-  idUsuario: number;
+
   router = inject(Router);
+  usuarioId: number;
 
   //Services
   activatedRoute = inject(ActivatedRoute);
@@ -23,7 +24,7 @@ export class EditarUsuarioComponent {
   adminServicio = inject(AdministradoresService)
 
   constructor() {
-    this.idUsuario = 0;
+    this.usuarioId = 0;
     this.formulario = new FormGroup({
       nombre: new FormControl(null, [
         Validators.required,
@@ -67,8 +68,10 @@ export class EditarUsuarioComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
-      const usuario = await this.usuariosService.getById(params['idUsuario']);
-      this.idUsuario = params['idUsuario'];
+      const usuario = await this.usuariosService.getById(params['usuarioId']);
+      console.log(usuario)
+      this.usuarioId = params['usuarioId'];
+
       const fechaFormateada = dayjs(usuario.fecha_alta).format('YYYY-MM-DD');
       const obj = { nombre: usuario.nombre, apellidos: usuario.apellidos, dni: usuario.dni, email: usuario.email, telefono: usuario.telefono, departamento: usuario.departamento, fecha_alta: fechaFormateada, estado: usuario.estado };
       this.formulario.setValue(obj);
@@ -78,8 +81,8 @@ export class EditarUsuarioComponent {
     });
   }
 
-  async onSubmit(): Promise<any> {
-    const response = await this.usuariosService.update(this.idUsuario, this.formulario.value);
+  async onSubmit() {
+    const response = await this.usuariosService.update(this.usuarioId, this.formulario.value);
     console.log(response)
 
 
@@ -117,3 +120,4 @@ export class EditarUsuarioComponent {
     }
   }
 }
+

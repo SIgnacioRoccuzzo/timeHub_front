@@ -36,7 +36,7 @@ export class ListaUsuariosComponent {
     const usuario = await this.usuariosService.deleteUser(idUsuario)
     if (!usuario.fatal) {
       const response = await this.usuariosService.getAll();
-     
+
       this.usuarios = response;
 
       Swal.fire({
