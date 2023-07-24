@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+.dark-mode {
+    /* background-color: black; */
+    background: url(./assets/images/fondo-darkmode.png) no-repeat;
+    background-size: cover;
+    color: antiquewhite;
+}

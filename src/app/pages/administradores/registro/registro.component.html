@@ -46,11 +46,18 @@
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" formControlName="password">
+
+                <div class="password-img">
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password">
+
+                    <i class="fa-solid fa-eye-slash" (click)="showPassword = !showPassword" *ngIf="!showPassword"></i>
+                    <i class="fa-solid fa-eye" (click)="showPassword = !showPassword" *ngIf="showPassword"></i>
+                </div>
 
                 <p class="error" *ngIf="checkError('password','required')">
                     Este campo es obligatorio
                 </p>
+
                 <p class="error" *ngIf="checkError('password','pattern')">
                     La password mínima es de 8 caracteres y debe contener: mayusculas, minusculas y numeros
                 </p>
@@ -67,7 +74,7 @@
             </p>
         </form>
 
-        <p class="copyright text-center my-0 mx-auto">Copyright © VaneSebasLidia 2023</p>
+        <p class="copyright text-center my-0 mx-auto mt-3">Copyright © VaneSebasLidia 2023</p>
 
     </div>
 

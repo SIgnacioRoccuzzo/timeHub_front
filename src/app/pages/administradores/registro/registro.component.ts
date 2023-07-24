@@ -17,6 +17,8 @@ export class RegistroComponent {
 
   mensajeError: boolean;
 
+  showPassword: boolean = false;
+
   constructor() {
     this.formulario = new FormGroup({
       nombre: new FormControl(null, [

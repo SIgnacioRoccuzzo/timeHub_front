@@ -19,6 +19,18 @@ section h2 {
     font-size: 55px;
 }
 
+section .password-img {
+    position: relative;
+}
+
+section .fa-solid {
+    position: absolute;
+    cursor: pointer;
+    color: #171836;
+    right: 3%;
+    top: 35%;
+}
+
 section .copyright {
     font-family: 'VT323', monospace;
 }
