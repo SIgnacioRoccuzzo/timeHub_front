@@ -1,11 +1,4 @@
-/* section {
-    background-color: black;
-} */
-
-/* table {
-    background-color: black;
-} */
-
-/* .table {
-    background-color: black;
-} */
+table,
+th {
+    opacity: 0.7;
+}
