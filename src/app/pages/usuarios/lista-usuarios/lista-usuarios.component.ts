@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -30,12 +31,22 @@ export class ListaUsuariosComponent {
     }
   };
 
-  async borrarUser(usuarioId: number) {
-    console.log(usuarioId)
-    const usuario = await this.usuariosService.deleteUser(usuarioId);
+  async borrarUser(idUsuario: number) {
+    console.log(idUsuario)
+    const usuario = await this.usuariosService.deleteUser(idUsuario)
     if (!usuario.fatal) {
       const response = await this.usuariosService.getAll();
-      this.usuariosService = response;
+     
+      this.usuarios = response;
+
+      Swal.fire({
+        title: 'Success!',
+        text: 'Acabas de borrar un usuario',
+        icon: 'success'
+      })
+
+      this.router.navigate(['/usuarios']);
+
     } else {
       console.log(usuario.fatal)
     }

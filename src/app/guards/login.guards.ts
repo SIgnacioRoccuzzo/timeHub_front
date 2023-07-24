@@ -1,11 +1,11 @@
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
-
+import jwt_decode from 'jwt-decode';
 
 export const loginGuard = () => {
     const router = inject(Router);
 
-    if (localStorage.getItem('admins_token')) {
+    if (localStorage.getItem('admin_token')) {
         return true;
     } else {
 
@@ -22,7 +22,7 @@ export const loginGuardUser = () => {
         return true;
     } else {
 
-        router.navigate(['login', 'user'])
+        router.navigate(['usuarios', '/usuario._id'])
 
         return false;
     }

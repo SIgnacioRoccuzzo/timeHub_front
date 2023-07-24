@@ -1,24 +1,44 @@
+<section>
+    <div class="container">
 
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-   
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" formControlName="email">
+        <h2>TimeHub</h2>
 
-        <p class="error" *ngIf="checkError('email','required')">
-            Este campo es obligatorio
-        </p>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+
+                <p class="error" *ngIf="checkError('email','required')">
+                    Este campo es obligatorio
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+
+                <p class="error" *ngIf="checkError('password','required')">
+                    Este campo es obligatorio
+                </p>
+            </div>
+
+            <div class="row g-2">
+                
+                <div class="col-12 col-md-6">
+                    <input type="submit" value="Login" class="btn btn-info w-100">
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <button [routerLink]="['/registro']" class="btn btn-info w-100"
+                        *ngIf="!adminServicio.isLogged()">Registro</button>
+                </div>
+
+            </div>
+
+        </form>
+
+        <p class="copyright text-center my-0 mx-auto">Copyright © VaneSebasLidia 2023</p>
+
     </div>
-
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" formControlName="password">
-
-        <p class="error" *ngIf="checkError('password','required')">
-            Este campo es obligatorio
-        </p>
-    </div>
-
-    <input type="submit" value="Login" class="btn btn-info" >
-</form>
-
+</section>

@@ -1,7 +1,31 @@
+<<<<<<< HEAD
+<h2>Fichar Horas</h2>
+<hr>
+=======
 <div>
     <div style="display: block">
         <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
         </canvas>
     </div>
     <button class="btn btn.primary" (click)="randomize()">Update</button>
-</div>
+    <div>
+        <div>
+            <h2>Registro de Horas</h2>
+
+            <div *ngIf="registrosHoras.length > 0">
+                <h3>Registros de Horas</h3>
+                <ul>
+                    <li *ngFor="let registro of registrosHoras">
+                        <p>{{ registro.proyecto_id }} - {{ registro.horas_dedicadas }}</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contador de Tiempo de Trabajo</h3>
+                <p>Tiempo total: {{ getTiempoTotal() }}</p>
+                <button (click)="togglePausa()">{{ pausado ? 'Reanudar' : 'Pausar' }}</button>
+            </div>
+        </div>
+    </div>
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)

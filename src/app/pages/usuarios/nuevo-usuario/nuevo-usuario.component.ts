@@ -63,9 +63,45 @@ export class NuevoUsuarioComponent {
   }
 
 
-  async onSubmit() {
+  async onSubmit(): Promise<any> {
     const response = await this.usuarioServices.create(this.formulario.value);
 
+<<<<<<< HEAD
+    if (response.fatal) {
+
+      if (response.fatal.includes('usuarios.dni_UNIQUE')) {
+        return Swal.fire({
+          title: 'Error!',
+          text: 'DNI ya existe',
+          icon: 'error'
+        })
+
+      } else if (response.fatal.includes('usuarios.telefono_UNIQUE')) {
+        return Swal.fire({
+          title: 'Error!',
+          text: 'Telefono ya existe',
+          icon: 'error'
+        })
+
+      } else if (response.fatal.includes('usuarios.email_UNIQUE')) {
+
+        return Swal.fire({
+          title: 'Error!',
+          text: 'Correo ya existe',
+          icon: 'error'
+        })
+      }
+    } else {
+      Swal.fire({
+        title: 'Success!',
+        text: 'creación de nuevo usuario con éxito',
+        icon: 'success'
+      })
+
+      this.router.navigate(['/usuarios']);
+    }
+
+=======
     Swal.fire({
       title: 'Success!',
       text: 'Se ha registrado con éxito',
@@ -74,10 +110,10 @@ export class NuevoUsuarioComponent {
 
     // Inserción correcta
     this.router.navigate(['/login/user']);
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
   }
 
   checkError(field: string, error: string) {
-    // 因为两个都是显示的true/false
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
 
@@ -104,4 +140,8 @@ export class NuevoUsuarioComponent {
   }
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
 }

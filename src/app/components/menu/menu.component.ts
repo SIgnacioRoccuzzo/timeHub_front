@@ -17,7 +17,7 @@ export class MenuComponent {
 
 
   onClickLogout() {
-    localStorage.removeItem('admins_token');
+    localStorage.removeItem('admin_token');
     this.router.navigate(['/login']);
   }
 

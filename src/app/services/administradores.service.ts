@@ -28,6 +28,6 @@ export class AdministradoresService {
   }
 
   isLogged(): boolean {
-    return localStorage.getItem('admins_token') ? true : false
+    return localStorage.getItem('admin_token') ? true : false
   }
 }

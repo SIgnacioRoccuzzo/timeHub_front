@@ -1,3 +1,36 @@
+<<<<<<< HEAD
+<nav *ngIf="adminServicio.isLogged()">
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a [routerLink]="['']" *ngIf="adminServicio.isLogged()" href=""
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+        <span class="fs-4">TimeHube</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a [routerLink]="['/usuarios/usuario._id']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link active" aria-current="page">Mi
+            perfil</a> </li>
+        <li class="nav-item"><a [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link">Lista Usuarios</a></li>
+        <li class="nav-item"><a [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link">Añadir usuario</a></li>
+        <li class="nav-item"><a [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()" href="#"
+            class="nav-link">Registro</a></li>
+        <li class="nav-item"><a [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()" href="#"
+            class="nav-link">Login</a></li>
+        <li class="nav-item"><a *ngIf="adminServicio.isLogged()" (click)="onClickLogout()" href="#"
+            class="nav-link">Logout</a></li>
+
+      </ul>
+    </header>
+  </div>
+
+
+=======
 <nav>
   <ul>
     <li [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()">
@@ -8,6 +41,7 @@
       Usuario Nuevo
     </li>
 
+
     <li [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged() && router.url === '/login'">
       Registro
     </li>
@@ -16,8 +50,8 @@
       Login
     </li>
 
-    <li [routerLink]="['/login/user']"
-      *ngIf="!adminServicio.isLogged() && router.url !== '/login' && !usuariosService.isLoggedUser()">
+
+    <li [routerLink]="['/login/user']" *ngIf="router.url !== '/login' && !usuariosService.isLoggedUser()">
       Login User
     </li>
     <li *ngIf="usuariosService.isLoggedUser()" (click)="onClickLogoutUser()">
@@ -29,4 +63,5 @@
     </li>
 
   </ul>
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
 </nav>

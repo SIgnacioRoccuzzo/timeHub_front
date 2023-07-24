@@ -4,7 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegistroHorasService } from 'src/app/services/registro-horas.service';
-
+import { UserProyecto } from 'src/app/interfaces/userProyecto.interface';
 
 
 @Component({
@@ -13,8 +13,13 @@ import { RegistroHorasService } from 'src/app/services/registro-horas.service';
   styleUrls: ['./horas.component.css']
 })
 export class HorasComponent {
+<<<<<<< HEAD
+=======
 
-
+  private interval: any;
+  private tiempoTotal = 0;
+  pausado: boolean = true;
+  registrosHoras: UserProyecto[] = [];
   //Services
   registroService = inject(RegistroHorasService);
   activatedRoute = inject(ActivatedRoute);
@@ -66,6 +71,49 @@ export class HorasComponent {
     this.chart?.update();
   }
 
+  ngOnInit(): void {
+    const date = new Date();
+    const idUsuario = this.activatedRoute.snapshot.params['idUsuario'];
+    this.getRegistrosByDate(date, idUsuario);
+    this.startContador();
+  }
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
+
+  private startContador(): void {
+    this.interval = setInterval(() => {
+      if (!this.pausado) {
+        this.tiempoTotal += 1;
+      }
+    }, 1000);
+  }
+
+  togglePausa(): void {
+    this.pausado = !this.pausado;
+  }
+
+  getTiempoTotal(): string {
+    const segundos = this.tiempoTotal % 60;
+    const minutos = Math.floor(this.tiempoTotal / 60) % 60;
+    const horas = Math.floor(this.tiempoTotal / 3600);
+
+    return `${this.formatTime(horas)}:${this.formatTime(minutos)}:${this.formatTime(segundos)}`;
+  }
+
+  private formatTime(time: number): string {
+    return time.toString().padStart(2, '0');
+  }
+
+  async getRegistrosByDate(date: Date, idUsuario: number): Promise<void> {
+    try {
+      this.registrosHoras = await this.registroService.getByDate(idUsuario, date);
+    } catch (error) {
+      console.log('Error al obtener los registros de horas', error);
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
 }
 
 

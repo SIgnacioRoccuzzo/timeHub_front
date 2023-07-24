@@ -17,7 +17,11 @@ import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-p
 import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
 import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
 import { NgChartsModule } from 'ng2-charts';
+<<<<<<< HEAD
+import { InicioComponent } from './components/inicio/inicio.component';
+=======
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-us
     DatosPerfilComponent,
     ProyectosComponent,
     HorasComponent,
+<<<<<<< HEAD
+    InicioComponent
+=======
     LoginUsuariosComponent
+>>>>>>> a211bb1 (botones ocultos y arreglo del perfil del usuario)
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { AdministradoresService } from 'src/app/services/administradores.service';
 import * as dayjs from 'dayjs';
+import { AdministradoresService } from 'src/app/services/administradores.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -12,7 +14,8 @@ import * as dayjs from 'dayjs';
 })
 export class EditarUsuarioComponent {
   formulario: FormGroup;
-  usuarioId: number;
+  idUsuario: number;
+  router = inject(Router);
 
   //Services
   activatedRoute = inject(ActivatedRoute);
@@ -20,36 +23,97 @@ export class EditarUsuarioComponent {
   adminServicio = inject(AdministradoresService)
 
   constructor() {
-    this.usuarioId = 0;
+    this.idUsuario = 0;
     this.formulario = new FormGroup({
-      nombre: new FormControl(),
-      apellidos: new FormControl(),
-      dni: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      telefono: new FormControl(),
-      departamento: new FormControl(),
-      fecha_alta: new FormControl(),
-      estado: new FormControl()
+      nombre: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+
+      apellidos: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(20)
+      ]),
+
+      dni: new FormControl(null, [
+        Validators.required,
+        this.dniValidator
+      ]),
+
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/)
+      ]),
+
+      telefono: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(9)
+      ]),
+
+      departamento: new FormControl(null, [
+        Validators.required,
+      ]),
+
+      fecha_alta: new FormControl(null, [
+        Validators.required,
+      ]),
+
+      estado: new FormControl(null, [
+        Validators.required,
+      ])
     });
   };
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
-      const usuario = await this.usuariosService.getById(params['usuarioId']);
-      console.log(usuario)
-      this.usuarioId = params['usuarioId'];
-
+      const usuario = await this.usuariosService.getById(params['idUsuario']);
+      this.idUsuario = params['idUsuario'];
       const fechaFormateada = dayjs(usuario.fecha_alta).format('YYYY-MM-DD');
-      const obj = { nombre: usuario.nombre, apellidos: usuario.apellidos, dni: usuario.dni, email: usuario.email, password: usuario.password, telefono: usuario.telefono, departamento: usuario.departamento, fecha_alta: fechaFormateada, estado: usuario.estado };
+      const obj = { nombre: usuario.nombre, apellidos: usuario.apellidos, dni: usuario.dni, email: usuario.email, telefono: usuario.telefono, departamento: usuario.departamento, fecha_alta: fechaFormateada, estado: usuario.estado };
       this.formulario.setValue(obj);
 
+
+      this.formulario.markAllAsTouched();
     });
   }
 
-  async onSubmit() {
-    const response = await this.usuariosService.update(this.usuarioId, this.formulario.value);
+  async onSubmit(): Promise<any> {
+    const response = await this.usuariosService.update(this.idUsuario, this.formulario.value);
     console.log(response)
+
+
+    if (!response.fatal) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Actualización con éxito',
+        icon: 'success'
+      })
+
+      this.router.navigate(['/usuarios']);
+    }
+  }
+
+  checkError(field: string, error: string) {
+    return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
+  }
+
+  dniValidator(control: AbstractControl) {
+    const value = control.value
+    const expresionRegularDni = /^\d{8}[a-zA-Z]$/;
+    const listaLetras = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    if (expresionRegularDni.test(value)) {
+      let numero = value.substring(0, value.length - 1);
+      let capturaLetra = value.substring(value.length - 1, value.length);
+      numero = numero % 23;
+      let letraSeleccionada = listaLetras.substring(numero, numero + 1);
+      if (letraSeleccionada != capturaLetra.toUpperCase()) {
+        return { dnivalidator: 'La letra no coincide' }
+      } else {
+        return null
+      }
+    } else {
+      return { dnivalidator: 'El formato del DNI es incorrecto' }
+    }
   }
 }
-
