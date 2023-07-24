@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -16,6 +17,8 @@ export class ListaUsuariosComponent {
   //Services
   usuariosService = inject(UsuariosService);
   router = inject(Router);
+
+  private darkModeService = inject(DarkModeService);
 
   constructor() {
     this.usuarios = [];
@@ -50,5 +53,9 @@ export class ListaUsuariosComponent {
     } else {
       console.log(usuario.fatal)
     }
+  }
+
+  get darkMode(): boolean {
+    return this.darkModeService.darkMode;
   }
 }

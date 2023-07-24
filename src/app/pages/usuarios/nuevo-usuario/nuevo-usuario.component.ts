@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -13,6 +14,8 @@ export class NuevoUsuarioComponent {
   formulario: FormGroup;
   usuarioServices = inject(UsuariosService);
   router = inject(Router);
+
+  private darkModeService = inject(DarkModeService);
 
   constructor() {
     this.formulario = new FormGroup({
@@ -137,6 +140,11 @@ export class NuevoUsuarioComponent {
 
     }
 
+  }
+
+
+  get darkMode(): boolean {
+    return this.darkModeService.darkMode;
   }
 
 }

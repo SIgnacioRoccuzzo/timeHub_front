@@ -7,7 +7,7 @@ section {
 }
 
 section form {
-    margin: 5% auto;
+    margin: 0 auto;
     width: 25vw;
     padding: 20px;
     border: 2px solid white;
@@ -17,6 +17,18 @@ section form {
 section h2 {
     font-family: 'VT323', monospace;
     font-size: 55px;
+}
+
+section .password-img {
+    position: relative;
+}
+
+section .fa-solid {
+    position: absolute;
+    cursor: pointer;
+    color: #171836;
+    right: 3%;
+    top: 35%;
 }
 
 section .copyright {

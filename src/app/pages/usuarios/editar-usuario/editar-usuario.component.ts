@@ -6,6 +6,7 @@ import { AdministradoresService } from 'src/app/services/administradores.service
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import * as dayjs from 'dayjs';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -17,6 +18,8 @@ export class EditarUsuarioComponent {
 
   router = inject(Router);
   usuarioId: number;
+
+  private darkModeService = inject(DarkModeService);
 
   //Services
   activatedRoute = inject(ActivatedRoute);
@@ -118,6 +121,10 @@ export class EditarUsuarioComponent {
     } else {
       return { dnivalidator: 'El formato del DNI es incorrecto' }
     }
+  }
+
+  get darkMode(): boolean {
+    return this.darkModeService.darkMode;
   }
 }
 

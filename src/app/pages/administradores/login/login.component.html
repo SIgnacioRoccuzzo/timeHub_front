@@ -16,15 +16,25 @@
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" formControlName="password">
+
+
+                <div class="password-img">
+
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password">
+
+                    <i class="fa-solid fa-eye-slash" (click)="showPassword = !showPassword" *ngIf="!showPassword"></i>
+                    <i class="fa-solid fa-eye" (click)="showPassword = !showPassword" *ngIf="showPassword"></i>
+                </div>
+
 
                 <p class="error" *ngIf="checkError('password','required')">
                     Este campo es obligatorio
                 </p>
             </div>
 
+
             <div class="row g-2">
-                
+
                 <div class="col-12 col-md-6">
                     <input type="submit" value="Login" class="btn btn-info w-100">
                 </div>
