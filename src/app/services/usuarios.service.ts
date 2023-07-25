@@ -56,5 +56,23 @@ export class UsuariosService {
     )
   }
 
+  getLoginUser(formValue: any): Promise<Usuario | any> {
+    return firstValueFrom(
+      this.httpClient.post<Usuario | any>(`${this.baseUrl}/login/user`, formValue)
+    );
+  }
+  getByprofile(): Promise<Usuario | any> {
+    return firstValueFrom(
+      this.httpClient.get<Usuario | any>(`${this.baseUrl}/profile`)
+    );
+  };
+
+  isLoggedUser(): boolean {
+    return localStorage.getItem('user_token') ? true : false
+
+  }
+
 }
+
+
 
