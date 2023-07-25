@@ -47,20 +47,20 @@ export class ProyectosComponent {
   barChartData: ChartData<'bar'> = {
     labels: [],
     datasets: []
-  };
+  }
+  /* chartColors: any[] = [
+    {
+      backgroundColor: ["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"]
+    }]; */
 
   async ngOnInit() {
     const proyectos = await this.proyectosService.getProyectos()
-
 
     for (let proyecto of proyectos) {
       this.nombresProyectos.push(proyecto.nombre)
       this.idProyectos.push(proyecto.id)
       console.log(this.idProyectos)
     }
-
-
-
 
   }
 
@@ -70,12 +70,7 @@ export class ProyectosComponent {
   }
   async cambioProyecto($event: any) {
     const idProyecto = $event.target.value
-    console.log('id proyecto', idProyecto)
-
-    this.activatedRoute.params.subscribe(async params => {
-      this.registros = await this.proyectosService.getRegistro(params['idUsuario'], idProyecto, this.mes)
-      console.log('params', params['idUsuario'])
-    })
+    this.registros = await this.proyectosService.getRegistro(idProyecto, this.mes)
 
     for (let registro of this.registros) {
       /*  this.nombreProyecto.push(registro.proyecto) */
