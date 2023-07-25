@@ -21,6 +21,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { InicioComponent } from './components/inicio/inicio.component';
 
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
+import { ListaProyectosComponent } from './pages/administradores/lista-proyectos/lista-proyectos.component';
+import { EditarProyectosComponent } from './pages/administradores/editar-proyectos/editar-proyectos.component';
+import { NuevoProyectoComponent } from './pages/administradores/nuevo-proyecto/nuevo-proyecto.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-us
     HorasComponent,
     InicioComponent,
 
-    LoginUsuariosComponent
+    LoginUsuariosComponent,
+      ListaProyectosComponent,
+      EditarProyectosComponent,
+      NuevoProyectoComponent
 
   ],
   imports: [

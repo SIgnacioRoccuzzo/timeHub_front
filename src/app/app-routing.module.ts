@@ -12,12 +12,14 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { loginGuard, loginGuardUser } from './guards/login.guards';
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './pages/usuarios/perfil/perfil.component';
+import { ListaProyectosComponent } from './pages/administradores/lista-proyectos/lista-proyectos.component';
 
 
 const routes: Routes = [
   { path: 'login/user', component: LoginUsuariosComponent },
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent, canActivate: [loginGuard] },
   { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [loginGuard] },
+  { path: 'proyectos', component: ListaProyectosComponent, canActivate: [loginGuard] },
   { path: 'usuarios/perfil', component: PerfilComponent, canActivate: [loginGuardUser] },
   { path: 'usuarios/editar/:usuarioId', component: EditarUsuarioComponent, canActivate: [loginGuard] },
   { path: 'registro', component: RegistroComponent },

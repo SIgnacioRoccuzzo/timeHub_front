@@ -30,5 +30,12 @@ export class ProyectosService {
 
   }
 
+  deleteProyect(proyectoId: number): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.delete<Proyecto | any>(`${this.baseUrl}/${proyectoId}`)
+    );
+  };
+
+
 
 }
