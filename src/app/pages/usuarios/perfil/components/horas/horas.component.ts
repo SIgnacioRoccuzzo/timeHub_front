@@ -20,17 +20,14 @@ export class HorasComponent {
 
   obtenerHoraFechaActual(): string {
     this.ahora = new Date();
-
     // Obtenemos la hora
     this.horas = String(this.ahora.getHours()).padStart(2, '0');
     this.minutos = String(this.ahora.getMinutes()).padStart(2, '0');
     this.segundos = String(this.ahora.getSeconds()).padStart(2, '0');
-
     // Obtenemos la fecha
     this.año = this.ahora.getFullYear();
     this.mes = String(this.ahora.getMonth() + 1).padStart(2, '0');
     this.dia = String(this.ahora.getDate()).padStart(2, '0');
-
     // Creamos la cadena de hora y fecha
     const horaFecha = `${this.horas}:${this.minutos}:${this.segundos} - ${this.año}-${this.mes}-${this.dia}`;
 
