@@ -24,6 +24,7 @@ import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-us
 import { ListaProyectosComponent } from './pages/administradores/lista-proyectos/lista-proyectos.component';
 import { EditarProyectosComponent } from './pages/administradores/editar-proyectos/editar-proyectos.component';
 import { NuevoProyectoComponent } from './pages/administradores/nuevo-proyecto/nuevo-proyecto.component';
+import { PerfilAdministradorComponent } from './pages/administradores/perfil-administrador/perfil-administrador.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NuevoProyectoComponent } from './pages/administradores/nuevo-proyecto/n
     LoginUsuariosComponent,
       ListaProyectosComponent,
       EditarProyectosComponent,
-      NuevoProyectoComponent
+      NuevoProyectoComponent,
+      PerfilAdministradorComponent
 
   ],
   imports: [

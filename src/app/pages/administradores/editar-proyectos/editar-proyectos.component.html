@@ -1,1 +1,15 @@
-<p>editar-proyectos works!</p>
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre del proyecto</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nombre"
+                formControlName="nombre">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                formControlName="descripcion"></textarea>
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-info" [disabled]="!formulario.valid">
+    </form>
+</div>

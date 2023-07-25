@@ -10,7 +10,10 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a [routerLink]="['/usuarios/usuario._id']" *ngIf="adminServicio.isLogged()" href="#"
+        <li class="nav-item"><a [routerLink]="['/usuarios/perfil']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link active" aria-current="page">Mi
+            perfil</a> </li>
+        <li class="nav-item"><a [routerLink]="['/admin/perfil']" *ngIf="adminServicio.isLogged()" href="#"
             class="nav-link active" aria-current="page">Mi
             perfil</a> </li>
         <li class="nav-item"><a [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()" href="#"
@@ -19,6 +22,8 @@
             class="nav-link">Lista Proyectos</a></li>
         <li class="nav-item"><a [routerLink]="['/usuarios', 'nuevo']" *ngIf="adminServicio.isLogged()" href="#"
             class="nav-link">Añadir usuario</a></li>
+        <li class="nav-item"><a [routerLink]="['/proyectos', 'nuevo']" *ngIf="adminServicio.isLogged()" href="#"
+            class="nav-link">Añadir proyecto</a></li>
         <li class="nav-item"><a [routerLink]="['/registro']" *ngIf="!adminServicio.isLogged()" href="#"
             class="nav-link">Registro</a></li>
         <li class="nav-item"><a [routerLink]="['/login']" *ngIf="!adminServicio.isLogged()" href="#"
