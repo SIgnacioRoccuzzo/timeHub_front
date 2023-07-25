@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,6 +15,7 @@ export class MenuComponent {
 
   usuariosService = inject(UsuariosService)
   adminServicio = inject(AdministradoresService);
+
   router = inject(Router);
 
   darkModeService = inject(DarkModeService);
@@ -23,15 +25,16 @@ export class MenuComponent {
     this.router.navigate(['/login']);
   }
 
-  onClickLogoutUser() {
-    localStorage.removeItem('user_token');
-    this.router.navigate(['/login/user']);
-  }
 
   toggleDarkMode() {
     this.darkModeService.toggleDarkMode();
     console.log('modo oscuro' + this.darkModeService.darkMode);
 
+  }
+
+  onClickLogoutUser() {
+    localStorage.removeItem('user_token');
+    this.router.navigate(['/login/user']);
   }
 
   get darkMode(): boolean {

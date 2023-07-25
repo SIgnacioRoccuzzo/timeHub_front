@@ -47,6 +47,7 @@ export class UsuariosService {
       this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${usuarioId}/${fecha}`)
     );
   }
+ 
   getLoginUser(formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
       this.httpClient.post<Usuario | any>(`${this.baseUrl}/login/user`, formValue)
@@ -64,4 +65,6 @@ export class UsuariosService {
   }
 
 }
+
+
 
