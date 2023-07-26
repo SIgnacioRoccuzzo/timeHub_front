@@ -1,9 +1,10 @@
 <section>
     <div class="container">
 
-        <h2>TimeHub</h2>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="mb-3">
 
-        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <h2>TimeHub</h2>
+            <h3>Login Admin</h3>
 
             <div class="mb-3">
                 <label class="form-label">Email</label>
@@ -45,6 +46,10 @@
                 </div>
 
             </div>
+
+            <p class="text-center mt-3">
+                ¿Tu eres un usuario? <a [routerLink]="['/login/user']">Inicia sesión.</a>
+            </p>
 
         </form>
 

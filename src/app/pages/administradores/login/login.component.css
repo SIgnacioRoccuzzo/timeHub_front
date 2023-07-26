@@ -2,8 +2,9 @@ section {
     background: url(../../../../assets/images/fondo_login.jpg) no-repeat;
     background-size: cover;
     background-position: 25% 30%;
-    height: 100vh;
+    min-height: 100vh;
     color: aliceblue;
+    padding: 5px;
 }
 
 section form {
@@ -34,10 +35,6 @@ section .fa-solid {
 section .copyright {
     font-family: 'VT323', monospace;
 }
-
-/* input.ng-valid.ng-touched {
-    border: 2px solid green;
-} */
 
 input.ng-invalid.ng-touched {
     border: 2px solid red;

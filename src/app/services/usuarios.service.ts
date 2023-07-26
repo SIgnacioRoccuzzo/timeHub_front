@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
@@ -47,7 +47,7 @@ export class UsuariosService {
       this.httpClient.get<Proyecto | any>(`${this.baseUrl}/${usuarioId}/${fecha}`)
     );
   }
- 
+
   getLoginUser(formValue: any): Promise<Usuario | any> {
     return firstValueFrom(
       this.httpClient.post<Usuario | any>(`${this.baseUrl}/login/user`, formValue)
@@ -62,6 +62,19 @@ export class UsuariosService {
   isLoggedUser(): boolean {
     return localStorage.getItem('user_token') ? true : false
 
+  }
+
+
+
+  getSumHora(usuarios_Id: number, fecha: any): any {
+    const body = {
+      "usuarios_Id": usuarios_Id,
+      "fecha": fecha
+    }
+
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/getTime`, body)
+    )
   }
 
 }
