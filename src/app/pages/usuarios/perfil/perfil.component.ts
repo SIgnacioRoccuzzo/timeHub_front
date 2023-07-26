@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 
 
 
@@ -8,6 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent {
+
+  private darkModeService = inject(DarkModeService);
+
+
+  get darkMode(): boolean {
+    return this.darkModeService.darkMode;
+  }
 
 }
 

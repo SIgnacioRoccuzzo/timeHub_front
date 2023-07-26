@@ -6,7 +6,7 @@ import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-u
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
 
-import { LoginAdminGuard } from './guards/login-admin.guards';
+import { LoginAdminGuard, LoginUserGuard } from './guards/login-admin.guards';
 import { InicioComponent } from './components/inicio/inicio.component';
 
 import { loginGuard, loginGuardUser } from './guards/login.guards';
@@ -15,7 +15,10 @@ import { PerfilComponent } from './pages/usuarios/perfil/perfil.component';
 
 
 const routes: Routes = [
-  { path: 'login/user', component: LoginUsuariosComponent },
+  {
+    path: 'login/user', component: LoginUsuariosComponent,
+    canActivate: [LoginUserGuard]
+  },
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent, canActivate: [loginGuard] },
   { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [loginGuard] },
   { path: 'usuarios/perfil', component: PerfilComponent, canActivate: [loginGuardUser] },

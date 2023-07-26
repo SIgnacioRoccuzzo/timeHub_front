@@ -14,7 +14,9 @@ export class LoginUsuariosComponent {
   usuariosService = inject(UsuariosService);
   router = inject(Router);
 
-  mensajeError: boolean
+  mensajeError: boolean;
+
+  showPassword: boolean = false;
 
   constructor() {
     this.formulario = new FormGroup({

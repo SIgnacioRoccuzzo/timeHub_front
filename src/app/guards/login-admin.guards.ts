@@ -13,5 +13,17 @@ export const LoginAdminGuard = () => {
 
 }
 
+export const LoginUserGuard = () => {
+    const router = inject(Router);
+
+    if (localStorage.getItem('user_token')) {
+        router.navigate(['/usuarios/perfil']);
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
 
 

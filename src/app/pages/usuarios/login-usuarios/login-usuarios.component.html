@@ -1,24 +1,46 @@
-<div class="container">
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<section>
+    <div class="container">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="mb-3">
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" formControlName="email">
 
-            <p class="error" *ngIf="checkError('email','required')">
-                Este campo es obligatorio
+            <h2>TimeHub</h2>
+            <h3>Login User</h3>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+
+                <p class="error" *ngIf="checkError('email','required')">
+                    Este campo es obligatorio
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+               
+                <div class="password-img">
+
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password">
+
+                    <i class="fa-solid fa-eye-slash" (click)="showPassword = !showPassword" *ngIf="!showPassword"></i>
+                    <i class="fa-solid fa-eye" (click)="showPassword = !showPassword" *ngIf="showPassword"></i>
+                </div>
+
+                <p class="error" *ngIf="checkError('password','required')">
+                    Este campo es obligatorio
+                </p>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 mb-3">
+                <input type="submit" value="Login" class="btn btn-info">
+            </div>
+
+            <p class="text-center">
+                ¿Tu eres un Admin? <a [routerLink]="['/login']">Inicia sesión.</a>
             </p>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" formControlName="password">
+        </form>
 
-            <p class="error" *ngIf="checkError('password','required')">
-                Este campo es obligatorio
-            </p>
-        </div>
-
-        <input type="submit" value="Login" class="btn btn-info">
-    </form>
-</div>
+        <p class="copyright text-center my-0 mx-auto">Copyright © VaneSebasLidia 2023</p>
+    </div>
+</section>
