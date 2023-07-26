@@ -1,0 +1,16 @@
+.horas {
+    display: flex;
+}
+
+.horas input {
+    width: 50%;
+    margin-right: 5%;
+}
+
+.horas button {
+    width: 45%;
+}
+
+.enviar {
+    margin-top: 10px;
+}

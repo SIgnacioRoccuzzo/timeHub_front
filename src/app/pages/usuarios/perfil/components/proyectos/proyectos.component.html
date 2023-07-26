@@ -1,14 +1,9 @@
 <hr>
-
-<div>
-    <h2>Control de horas:{{mes}}</h2>
-</div>
-
+<h4>Control de horas</h4>
 <hr>
-<div class="selectores row">
 
-    <select style="width: 65vh;" (change)="cambioMes($event)" class="form-select form-select-lg mb-3"
-        aria-label=".form-select-lg example">
+<div class="selectores ">
+    <select (change)="cambioMes($event)" class="form-select form-select-sm " aria-label=".form-select-lg example">
         <option value="">Selecciona un mes</option>
         <option value="1">Enero</option>
         <option value="2">Febrero</option>
@@ -24,8 +19,7 @@
         <option value="12">Diciembre</option>
 
     </select>
-    <select style="width: 65vh;" (change)="cambioProyecto($event)" class="form-select form-select-lg mb-3 "
-        aria-label=".form-select-lg example">
+    <select (change)="cambioProyecto($event)" class="form-select form-select-sm " aria-label=" .form-select-lg example">
         <option value="0">selecciona un proyecto</option>
         <option [value]=proyecto.id *ngFor="let proyecto of proyectos ">
             {{proyecto.nombre}}</option>
@@ -35,13 +29,35 @@
     </select>
 </div>
 
-
-<div class="barras">
-    <div style="display: block; height: 400px; width: 100%;">
-        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
-        </canvas>
+<div class="controlHoras row">
+    <div class="barras col-6">
+        <div style="display: block; height: 400px; width: 100%;">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+            </canvas>
+        </div>
+        <div>
+        </div>
     </div>
-    <div>
+    <div class="informacion col-6">
+        <div class="card text-bg-light mb-3" style="width: 95%;">
+            <div class="card-header">TimeHub</div>
+            <div class="card-body">
+                <h5 class="card-title">Horas totales en el mes</h5>
+                <p class="card-text">el cómputo general de tus horas en todo el mes, es de
+                    <strong>{{numeroHoras}}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="card text-bg-light mb-3" style="width: 95%;">
+            <div class="card-header">TimeHub</div>
+            <div class="card-body">
+                <h5 class="card-title">Horas extra</h5>
+                <p class="card-text">El número de horas extra hechas este mes, es de
+                    <strong>{{totalHorasExtra}}</strong> en el proyecto <strong>{{nombre}}</strong>,
+                    póngase en contacto con la empresa para decidir si quiere disfrutarlas, o que le sean abonadas
+                </p>
+            </div>
+        </div>
 
     </div>
 </div>

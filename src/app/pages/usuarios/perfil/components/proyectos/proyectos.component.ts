@@ -27,6 +27,8 @@ export class ProyectosComponent {
   horasPorProyecto: any[] = []
   horasExtra: number[] = []
   numeroHoras: number = 0
+  numeroHorasExtra: number[] = []
+  totalHorasExtra: number = 0
 
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -36,7 +38,7 @@ export class ProyectosComponent {
     scales: {
       x: {},
       y: {
-        min: 1
+        min: 0
       }
     },
     plugins: {
@@ -70,6 +72,7 @@ export class ProyectosComponent {
     this.registros = await this.proyectosService.getRegistro(idProyecto, this.mes)
     this.horasPorProyecto = await this.proyectosService.getHour(this.mes)
     this.horasExtra = await this.proyectosService.getHorasExtra(this.mes)
+
     console.log(this.horasExtra)
     if (idProyecto === '0') {
       this.barChartData = {
@@ -78,16 +81,17 @@ export class ProyectosComponent {
           {
             data: this.horasPorProyecto[0].map((horasProyecto: any) => horasProyecto.total_horas_dedicadas),
             label: 'Todos los proyectos',
-            backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#ffc107'],
+            backgroundColor: ['#0dcaf0', '#198754', '#dc3545', '#ffc107'],
           },
         ]
       };
       console.log(this.horasPorProyecto[0])
     } else if (idProyecto === 'extra') {
       this.barChartData = {
+        labels: this.horasExtra.map((nombreProyecto: any) => nombreProyecto.nombre_proyecto),
         datasets: [
           {
-            data: this.horasExtra,
+            data: this.horasExtra.map((horasProyecto: any) => horasProyecto.horas_extra_total),
             backgroundColor: '#ff0000'
           },
         ]
@@ -100,6 +104,7 @@ export class ProyectosComponent {
           this.fecha.push(dayjs(registro.fecha).format('DD'))
           this.horasDedicadas.push(registro.horas_dedicadas)
           this.nombre = registro.nombre
+          console.log('horas extra', this.horasExtra)
           // el dia que se hagan mas de 8 horas que la barra se ponga roja
           const masDe8 = this.horasDedicadas.findIndex(horas => horas > 8);
           this.barChartData = {
@@ -107,14 +112,23 @@ export class ProyectosComponent {
             datasets: [
               {
                 data: this.horasDedicadas, label: this.nombre,
-                backgroundColor: this.horasDedicadas.map((horas, index) => (index === masDe8 && horas > 8) ? '#ff0000' : '#0d6efd'),
+                backgroundColor: this.horasDedicadas.map((horas, index) => (index === masDe8 && horas > 8) ? '#ff0000' : '#0dcaf0'),
               },
             ]
           }
+
         }
+
+        this.numeroHorasExtra = this.horasExtra.map((horasProyecto: any) => horasProyecto.horas_extra_total)
+        console.log(this.numeroHorasExtra)
+
+
         //aqui consigo la suma de todas las horas por proyecto.
         this.numeroHoras = this.horasDedicadas.reduce((a, b) => a + b, 0)
-        console.log(this.numeroHoras)
+
+        this.totalHorasExtra = this.numeroHorasExtra.reduce((a, b) => a + b, 0)
+
+
         //vacio los valores de horas y fecha para que no se acumulen a lo anterior
         this.horasDedicadas = []
         this.fecha = []

@@ -17,6 +17,8 @@ import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edic
 
 
 const routes: Routes = [
+
+
   {
     path: 'login/user', component: LoginUsuariosComponent,
     canActivate: [LoginUserGuard]
@@ -34,7 +36,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent,
     canActivate: [LoginAdminGuard]
   },
-  { path: '', component: InicioComponent },
+  { path: 'inicio', component: InicioComponent },
   { path: 'usuarios/editar/:usuarioId', component: EdicionUsuarioComponent },
 
 
