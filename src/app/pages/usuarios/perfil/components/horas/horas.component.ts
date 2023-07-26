@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Proyecto } from 'src/app/interfaces/proyecto.interface';
 import { ProyectosService } from 'src/app/services/proyectos.service';
@@ -18,8 +18,10 @@ export class HorasComponent {
   nombresProyectos: any;
   idProyectos: any[] = []
   proyectos: Proyecto[] = []
-
-
+  usuarios_id: number = 0;
+  fecha_inicio: any;
+  fecha_fin: any;
+  horasTotalesSemana: number = 0;
 
   //Services
   activatedRoute = inject(ActivatedRoute);
@@ -50,6 +52,15 @@ export class HorasComponent {
 
   ngOnInit() {
     this.cargarProyectos();
+    this.cargarFechas()
+  }
+  async cargarFechas() {
+    try {
+      this.horasTotalesSemana = await this.usuariosService.getWeek(this.usuarios_id, this.fecha_inicio, this.fecha_fin)
+      console.log(this.horasTotalesSemana)
+    } catch (error) {
+      console.log('horasTotales')
+    }
   }
 
   async cargarProyectos() {

@@ -28,3 +28,19 @@
         <button type="submit" class="btn btn-info enviar" [disabled]=" !registroForm.valid">Registrar Horas</button>
     </form>
 </div>
+
+<div>
+    <div>
+        <label for="start-date">Fecha de inicio:</label>
+        <input type="date" id="start-date" [(ngModel)]="fecha_inicio" />
+
+        <label for="end-date">Fecha de fin:</label>
+        <input type="date" id="end-date" [(ngModel)]="fecha_fin" />
+    </div>
+
+    <div>
+        <p>Horas Totales: {{horasTotalesSemana}}</p>
+        <p>Inicio: {{ fecha_inicio | date }}</p>
+        <p>Fin: {{ fecha_fin | date }}</p>
+    </div>
+</div>
