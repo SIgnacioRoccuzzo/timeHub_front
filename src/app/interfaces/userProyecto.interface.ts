@@ -1,5 +1,9 @@
+
+
 export interface UserProyecto {
-    proyecto_id: number,
+    proyectos_id: number,
+    hora_entrada: string,
+    hora_salida: string,
     horas_dedicadas: number,
     fecha: Date
 }
