@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
@@ -38,6 +38,12 @@ export class UsuariosService {
       this.httpClient.put<Usuario | any>(`${this.baseUrl}/editar/${usuarioId}`, formValue)
     );
   };
+
+  updateUsuario(usuarioId: number, formValue: any): Promise<Usuario | any> {
+    return firstValueFrom(
+      this.httpClient.put<Usuario | any>(`${this.baseUrl}/editar/user/${usuarioId}`, formValue)
+    );
+  }
   deleteUser(usuarioId: number): Promise<Usuario | any> {
     return firstValueFrom(
       this.httpClient.delete<Usuario | any>(`${this.baseUrl}/${usuarioId}`)

@@ -5,37 +5,43 @@
 </div>
 
 <hr>
+<div class="selectores row">
 
-<select (change)="cambioMes($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>Selecciona un mes</option>
-    <option value="1">Enero</option>
-    <option value="2">Febrero</option>
-    <option value="3">Marzo</option>
-    <option value="4">Abril</option>
-    <option value="5">Mayo</option>
-    <option value="6">Junio</option>
-    <option value="7">Julio</option>
-    <option value="8">Agosto</option>
-    <option value="9">Septiembre</option>
-    <option value="10">Octubre</option>
-    <option value="11">Noviembre</option>
-    <option value="12">Diciembre</option>
+    <select style="width: 65vh;" (change)="cambioMes($event)" class="form-select form-select-lg mb-3"
+        aria-label=".form-select-lg example">
+        <option value="">Selecciona un mes</option>
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
 
-</select>
-<select (click)="cambioProyecto($event)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>selecciona un proyecto</option>
-    <option [value]=idProyecto *ngFor="let nombreProyecto of nombresProyectos let idProyecto of idProyectos">
-        {{nombreProyecto}}</option>
+    </select>
+    <select style="width: 65vh;" (change)="cambioProyecto($event)" class="form-select form-select-lg mb-3 "
+        aria-label=".form-select-lg example">
+        <option value="0">selecciona un proyecto</option>
+        <option [value]=proyecto.id *ngFor="let proyecto of proyectos ">
+            {{proyecto.nombre}}</option>
+        <option value="extra">Horas extra</option>
 
-</select>
+
+    </select>
+</div>
 
 
-<div>
+<div class="barras">
+    <div style="display: block; height: 400px; width: 100%;">
+        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+        </canvas>
+    </div>
     <div>
-        <div style="display: block">
-            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
-            </canvas>
-        </div>
-        <button class="btn btn.primary">Update</button>
+
     </div>
 </div>

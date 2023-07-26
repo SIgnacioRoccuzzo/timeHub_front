@@ -30,4 +30,9 @@ export class AdministradoresService {
   isLogged(): boolean {
     return localStorage.getItem('admins_token') ? true : false
   }
+  getByprofile(): Promise<Administrador | any> {
+    return firstValueFrom(
+      this.httpServicio.get<Administrador | any>(`${this.baseUrl}/profile`)
+    );
+  };
 }

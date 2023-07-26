@@ -18,6 +18,11 @@ export class ProyectosService {
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/proyectos'
   }
+  getById(proyectoId: number): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.get<Proyecto | any>(`${this.baseUrl}/obtener/proyecto/${proyectoId}`)
+    )
+  }
 
   getProyectos(): Promise<Proyecto[] | any> {
     return firstValueFrom(
@@ -29,7 +34,36 @@ export class ProyectosService {
     return firstValueFrom(
       this.httpClient.get<[]>(`${this.baseUrl}/${idProyecto}/${mes}`)
     )
-
   }
+  getHour(mes: number) {
+    return firstValueFrom(
+      this.httpClient.get<[]>(`${this.baseUrl}/horasporproyecto/${mes}`)
+    )
+  }
+  getHorasExtra(mes: number) {
+    return firstValueFrom(
+      this.httpClient.get<[]>(`${this.baseUrl}/obtener/horasextra/${mes}`)
+    )
+  }
+
+  deleteProyect(proyectoId: number): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.delete<Proyecto | any>(`${this.baseUrl}/${proyectoId}`)
+    );
+  };
+
+  create(formValue: any): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.post<Proyecto | any>(this.baseUrl, formValue)
+    );
+  }
+
+  update(proyectoId: number, formValue: any): Promise<Proyecto | any> {
+    return firstValueFrom(
+      this.httpClient.put<Proyecto | any>(`${this.baseUrl}/editar/${proyectoId}`, formValue)
+    );
+  }
+
+
 
 }

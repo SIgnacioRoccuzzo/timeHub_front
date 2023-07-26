@@ -79,8 +79,6 @@ export class EditarUsuarioComponent {
       const obj = { nombre: usuario.nombre, apellidos: usuario.apellidos, dni: usuario.dni, email: usuario.email, telefono: usuario.telefono, departamento: usuario.departamento, fecha_alta: fechaFormateada, estado: usuario.estado };
       this.formulario.setValue(obj);
 
-
-      this.formulario.markAllAsTouched();
     });
   }
 
