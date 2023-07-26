@@ -1,18 +1,28 @@
-<div class="container">
+<section [ngClass]="{'dark-mode':darkMode}">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre:</th>
+                    <th>Descripción</th>
 
-    <h2>Lista proyectos</h2>
+                </tr>
+            </thead>
 
-    <div class="proyectos" *ngFor="let proyecto of proyectos">
-        <hr>
-        <h3>{{proyecto.nombre}}</h3>
-        <hr>
-        <p>{{proyecto.descripcion}}</p>
-        <td>
-            <button class="btn btn-info" [routerLink]="['/proyectos', 'editar', proyecto.id]">Editar</button>
-        </td>
-        <td>
-            <button class="btn btn-danger ms-2" (click)="deleteProyect(proyecto.id)">Borrar</button>
-        </td>
+            <tbody>
+                <tr class="proyectos" *ngFor="let proyecto of proyectos">
+                    <td>{{proyecto.nombre}}</td>
+                    <td>{{proyecto.descripcion}}</td>
 
+                    <td>
+                        <button class="btn btn-info"
+                            [routerLink]="['/proyectos', 'editar', proyecto.id]">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger ms-2" (click)="deleteProyect(proyecto.id)">Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</div>
+</section>

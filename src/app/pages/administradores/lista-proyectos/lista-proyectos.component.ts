@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/interfaces/proyecto.interface';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import Swal from 'sweetalert2';
 
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ListaProyectosComponent {
   proyectosService = inject(ProyectosService)
+  darkModeService = inject(DarkModeService)
   router = inject(Router);
 
   proyectos: Proyecto[] = []
@@ -42,6 +44,10 @@ export class ListaProyectosComponent {
     } else {
       console.log(usuario.fatal)
     }
+  }
+
+  get darkMode(): boolean {
+    return this.darkModeService.darkMode;
   }
 
 }

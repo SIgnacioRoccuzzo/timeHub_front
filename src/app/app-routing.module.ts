@@ -14,6 +14,7 @@ import { ListaProyectosComponent } from './pages/administradores/lista-proyectos
 import { EditarProyectosComponent } from './pages/administradores/editar-proyectos/editar-proyectos.component';
 import { NuevoProyectoComponent } from './pages/administradores/nuevo-proyecto/nuevo-proyecto.component';
 import { PerfilAdministradorComponent } from './pages/administradores/perfil-administrador/perfil-administrador.component';
+import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edicion-usuario/edicion-usuario.component';
 
 
 const routes: Routes = [
@@ -25,13 +26,15 @@ const routes: Routes = [
   { path: 'proyectos', component: ListaProyectosComponent, canActivate: [loginGuard] },
   { path: 'usuarios/perfil', component: PerfilComponent, canActivate: [loginGuardUser] },
   { path: 'admin/perfil', component: PerfilAdministradorComponent, canActivate: [loginGuardUser] },
-  { path: 'usuarios/editar/:usuarioId', component: EditarUsuarioComponent, canActivate: [loginGuard] },
+  { path: 'admin/editar/:usuarioId', component: EditarUsuarioComponent, canActivate: [loginGuard] },
   { path: 'registro', component: RegistroComponent },
   {
     path: 'login', component: LoginComponent,
     canActivate: [LoginAdminGuard]
   },
   { path: '', component: InicioComponent },
+  { path: 'usuario/editar/:usuarioId', component: EdicionUsuarioComponent, canActivate: [loginGuard] },
+
 
 ];
 

@@ -14,5 +14,6 @@
         <p><i class="fa-solid fa-phone"></i> {{usuario.telefono}}</p>
         <p><i class="fa-regular fa-calendar"></i> Fecha de alta: {{usuario.fecha_alta | date: "dd-MM-YYYY"}}</p>
         <p><i class="fa-solid fa-pen-nib"></i> Departamento: {{usuario.departamento}}</p>
-        
+
+        <button class="btn btn-info" [routerLink]="['/usuarios', 'editar', usuario.id]">Editar</button>
     </div><!-- /.col-lg-4 -->
