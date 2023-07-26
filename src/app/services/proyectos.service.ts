@@ -5,6 +5,8 @@ import { firstValueFrom } from 'rxjs';
 
 
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,5 @@ export class ProyectosService {
     )
 
   }
-
 
 }

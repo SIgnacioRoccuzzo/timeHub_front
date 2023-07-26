@@ -3,6 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Proyecto } from '../interfaces/proyecto.interface';
+import { Time } from '@angular/common';
+import { UserProyecto } from '../interfaces/userProyecto.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +59,11 @@ export class UsuariosService {
       this.httpClient.get<Usuario | any>(`${this.baseUrl}/profile`)
     );
   };
+  getRegistroHour({ proyectos_id, hora_entrada, hora_salida, fecha }: any): Promise<UserProyecto | any> {
+    return firstValueFrom(
+      this.httpClient.post<UserProyecto | any>(`${this.baseUrl}/profile/horasdedicadas`, { proyectos_id, hora_entrada, hora_salida, fecha })
+    )
+  }
 
   isLoggedUser(): boolean {
     return localStorage.getItem('user_token') ? true : false

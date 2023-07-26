@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
-
-
-
+import { Component, inject } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Proyecto } from 'src/app/interfaces/proyecto.interface';
+import { ProyectosService } from 'src/app/services/proyectos.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-horas',
@@ -9,45 +13,107 @@ import { Component } from '@angular/core';
   styleUrls: ['./horas.component.css']
 })
 export class HorasComponent {
-  ahora = new Date();
-  horas: any
-  minutos: any
-  segundos: any
-  año: any
-  mes: any
-  dia: any
+  registroForm: FormGroup;
+
+  nombresProyectos: any;
+  idProyectos: any[] = []
+  proyectos: Proyecto[] = []
 
 
-  obtenerHoraFechaActual(): string {
-    this.ahora = new Date();
 
-    // Obtenemos la hora
-    this.horas = String(this.ahora.getHours()).padStart(2, '0');
-    this.minutos = String(this.ahora.getMinutes()).padStart(2, '0');
-    this.segundos = String(this.ahora.getSeconds()).padStart(2, '0');
+  //Services
+  activatedRoute = inject(ActivatedRoute);
+  usuariosService = inject(UsuariosService);
+  proyectosService = inject(ProyectosService)
 
-    // Obtenemos la fecha
-    this.año = this.ahora.getFullYear();
-    this.mes = String(this.ahora.getMonth() + 1).padStart(2, '0');
-    this.dia = String(this.ahora.getDate()).padStart(2, '0');
+  constructor() {
 
-    // Creamos la cadena de hora y fecha
-    const horaFecha = `${this.horas}:${this.minutos}:${this.segundos} - ${this.año}-${this.mes}-${this.dia}`;
+    this.registroForm = new FormGroup({
+      proyectos_id: new FormControl(null, [
+        Validators.required
+      ]),
+      hora_entrada: new FormControl(null, [
+        Validators.required, Validators.pattern(/^(?:[01]\d|2[0-3]):[0-5]\d$/)
+      ]),
+      hora_salida: new FormControl(null, [
+        Validators.required, Validators.pattern(/^(?:[01]\d|2[0-3]):[0-5]\d$/)
+      ]),
+      fecha: new FormControl(null, [
+        Validators.required
+      ])
 
-    return horaFecha;
+    })
+
   }
 
-  registrarHoraEntrada() {
-    const horaFecha = this.obtenerHoraFechaActual();
 
-    console.log(horaFecha)
+
+  ngOnInit() {
+    this.cargarProyectos();
   }
 
-  registrarHoraSalida() {
-    const horaFecha = this.obtenerHoraFechaActual();
-    console.log(horaFecha)
+  async cargarProyectos() {
+    try {
+      this.proyectos = await this.proyectosService.getProyectos();
+
+      for (let proyecto of this.proyectos) {
+
+        this.idProyectos.push(proyecto.id);
+      }
+    } catch (error) {
+      console.error('Error al cargar los proyectos:', error);
+    }
   }
+
+
+
+  async onSubmit() {
+    const response = await this.usuariosService.getRegistroHour(this.registroForm.value)
+
+    if (!response.fatal) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Se ha registrado tu jornada',
+        icon: 'success'
+      })
+    }
+  }
+
+  obtenerHoraEntrada() {
+    this.registroForm.controls['hora_entrada'].setValue(dayjs().format('HH:mm'))
+  }
+  obtenerHoraSalida() {
+    this.registroForm.controls['hora_salida'].setValue(dayjs().format('HH:mm'))
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

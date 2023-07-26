@@ -12,14 +12,14 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class DatosPerfilComponent {
   usuariosService = inject(UsuariosService)
   activatedRoute = inject(ActivatedRoute)
-  private router: Router;
+
 
   timer: Date
   usuario: Usuario
   proyecto: Proyecto[] = []
 
   constructor() {
-    this.router = new Router()
+
     this.timer = new Date();
     this.usuario = {
       id: 0,
@@ -36,24 +36,13 @@ export class DatosPerfilComponent {
   }
 
   async ngOnInit() {
-
-
     this.usuario = await this.usuariosService.getByprofile();
     console.log(this.usuario)
 
-
-
   }
-
 }
 
-/*   async cambioHora() {
-    const fecha = '2023-07-17'
-    this.activatedRoute.params.subscribe(async params =>
-      this.proyecto = await this.usuariosService.getProyectos(params['idUsuario'], fecha))
-    console.log('proyecto', this.proyecto)
- 
-  } */
+
 
 
 

@@ -1,6 +1,27 @@
-<h2>Fichar Horas</h2>
-<hr>
+<div class="container">
+    <h2>Registro de Horas Dedicadas</h2>
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-2 col-6">
+            <label class="form-label">Seleccionar Proyecto:</label>
+            <select value="select" class="form-control" formControlName="proyectos_id">
+                <option value="select" disabled selected>Selecciona un proyecto</option>
+                <option *ngFor="let proyecto of proyectos" [value]="proyecto.id">{{ proyecto.nombre }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group mb-2 col-4">
+            <input type="time" class="form-control mb-2" formControlName="hora_entrada">
+            <button type="button" (click)="obtenerHoraEntrada()" class="btn btn-info">Hora entrada</button>
+        </div>
 
-<button (click)="registrarHoraEntrada()" class="btn btn-light">Registrar hora de entrada</button>
-
-<button (click)="registrarHoraSalida()" class="btn btn-light">Registrar hora de salida</button>
+        <div class="form-group mb-2 col-4">
+            <input type="time" class="form-control mb-2" formControlName="hora_salida">
+            <button type="button" (click)="obtenerHoraSalida()" class="btn btn-info">Hora Salida</button>
+        </div>
+        <div class="form-group mb-2 col-4">
+            <label class="form-label">Fecha:</label>
+            <input type="date" class="form-control" formControlName="fecha">
+        </div>
+        <button type="submit" class="btn btn-info" [disabled]="!registroForm.valid">Registrar Horas</button>
+    </form>
+</div>

@@ -37,7 +37,6 @@ import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-us
     ProyectosComponent,
     HorasComponent,
     InicioComponent,
-
     LoginUsuariosComponent
 
   ],
