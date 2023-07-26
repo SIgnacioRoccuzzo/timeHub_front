@@ -13,9 +13,6 @@
         <li class="nav-item"><a [routerLink]="['/usuarios/perfil']" *ngIf="adminServicio.isLogged()" href="#"
             class="nav-link active" aria-current="page">Mi
             perfil</a> </li>
-        <li class="nav-item"><a [routerLink]="['/admin/perfil']" *ngIf="adminServicio.isLogged()" href="#"
-            class="nav-link active" aria-current="page">Mi
-            perfil</a> </li>
         <li class="nav-item"><a [routerLink]="['/usuarios']" *ngIf="adminServicio.isLogged()" href="#"
             class="nav-link">Lista Usuarios</a></li>
         <li class="nav-item"><a [routerLink]="['/proyectos']" *ngIf="adminServicio.isLogged()" href="#"

@@ -102,7 +102,6 @@ export class ProyectosComponent {
             ]
           }
         }
-
         //aqui consigo la suma de todas las horas por proyecto.
         this.numeroHoras = this.horasDedicadas.reduce((a, b) => a + b, 0)
         console.log(this.numeroHoras)
