@@ -13,7 +13,6 @@ import { PerfilComponent } from './pages/usuarios/perfil/perfil.component';
 import { ListaProyectosComponent } from './pages/administradores/lista-proyectos/lista-proyectos.component';
 import { EditarProyectosComponent } from './pages/administradores/editar-proyectos/editar-proyectos.component';
 import { NuevoProyectoComponent } from './pages/administradores/nuevo-proyecto/nuevo-proyecto.component';
-
 import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edicion-usuario/edicion-usuario.component';
 
 

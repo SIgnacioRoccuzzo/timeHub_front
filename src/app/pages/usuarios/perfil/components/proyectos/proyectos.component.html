@@ -29,6 +29,8 @@
         <option value="0">selecciona un proyecto</option>
         <option [value]=proyecto.id *ngFor="let proyecto of proyectos ">
             {{proyecto.nombre}}</option>
+        <option value="extra">Horas extra</option>
+
 
     </select>
 </div>
@@ -37,7 +39,6 @@
 <div class="barras">
     <div style="display: block; height: 400px; width: 100%;">
         <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
-
         </canvas>
     </div>
     <div>

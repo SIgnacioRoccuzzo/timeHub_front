@@ -20,14 +20,13 @@ export class ProyectosComponent {
 
   proyectos: Proyecto[] = []
   registros: any[] = []
-  nombre: any
+  nombre: string = ''
   horasDedicadas: number[] = []
   fecha: any[] = []
   mes: number = 0
   horasPorProyecto: any[] = []
-  horas: any
+  horasExtra: number[] = []
   numeroHoras: number = 0
-  backgroundColor: string = ''
 
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -53,7 +52,6 @@ export class ProyectosComponent {
     datasets: []
   }
 
-
   async ngOnInit() {
     //recupero todos los proyectos
     this.proyectos = await this.proyectosService.getProyectos()
@@ -71,6 +69,8 @@ export class ProyectosComponent {
     //consigo el registro que rellena el grafico
     this.registros = await this.proyectosService.getRegistro(idProyecto, this.mes)
     this.horasPorProyecto = await this.proyectosService.getHour(this.mes)
+    this.horasExtra = await this.proyectosService.getHorasExtra(this.mes)
+    console.log(this.horasExtra)
     if (idProyecto === '0') {
       this.barChartData = {
         labels: this.proyectos.map(proyecto => proyecto.nombre),
@@ -78,11 +78,21 @@ export class ProyectosComponent {
           {
             data: this.horasPorProyecto[0].map((horasProyecto: any) => horasProyecto.total_horas_dedicadas),
             label: 'Todos los proyectos',
-            backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#ffc107'], // Asignar el primer color del array
+            backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#ffc107'],
           },
         ]
       };
       console.log(this.horasPorProyecto[0])
+    } else if (idProyecto === 'extra') {
+      this.barChartData = {
+        datasets: [
+          {
+            data: this.horasExtra,
+            backgroundColor: '#ff0000'
+          },
+        ]
+      }
+
     } else {
       if (this.registros.length !== 0) {
         for (let registro of this.registros) {
@@ -118,6 +128,6 @@ export class ProyectosComponent {
 
     }
 
-
   }
 }
+

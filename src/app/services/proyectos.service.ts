@@ -38,6 +38,11 @@ export class ProyectosService {
       this.httpClient.get<[]>(`${this.baseUrl}/horasporproyecto/${mes}`)
     )
   }
+  getHorasExtra(mes: number) {
+    return firstValueFrom(
+      this.httpClient.get<[]>(`${this.baseUrl}/obtener/horasextra/${mes}`)
+    )
+  }
 
   deleteProyect(proyectoId: number): Promise<Proyecto | any> {
     return firstValueFrom(
