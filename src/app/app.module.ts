@@ -11,7 +11,7 @@ import { RegistroComponent } from './pages/administradores/registro/registro.com
 import { LoginComponent } from './pages/administradores/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatosPerfilComponent } from './pages/usuarios/perfil/components/datos-perfil/datos-perfil.component';
 import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos/proyectos.component';
@@ -41,8 +41,6 @@ import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edic
     ProyectosComponent,
     HorasComponent,
     InicioComponent,
-
-
     LoginUsuariosComponent,
     ListaProyectosComponent,
     EditarProyectosComponent,
@@ -56,6 +54,7 @@ import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edic
     HttpClientModule,
     ReactiveFormsModule,
     NgChartsModule,
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -28,3 +28,28 @@
         <button type="submit" class="btn btn-info enviar" [disabled]=" !registroForm.valid">Registrar Horas</button>
     </form>
 </div>
+
+
+<div>
+    <h2>Selecciona el rango de fechas:</h2>
+    <div>
+        <label for="fecha-inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha-inicio" [(ngModel)]="fecha_inicio">
+    </div>
+    <div>
+        <label for="fecha-fin">Fecha de fin:</label>
+        <input type="date" id="fecha-fin" [(ngModel)]="fecha_fin">
+    </div>
+    <button class="btn btn-info" (click)="cargarFechas()">Cargar datos</button>
+</div>
+
+<div *ngIf="horasTotalesSemana !== undefined">
+    <h2>Resultados:</h2>
+    <p>Horas totales de la semana: {{ horasTotalesSemana }}</p>
+    <p *ngIf="horasTotalesSemana === horasPorContrato">El trabajador cumple con las horas semanales pactadas por
+        contrato.</p>
+    <p *ngIf="horasTotalesSemana > horasPorContrato">El trabajador ha excedido las horas semanales pactadas por
+        contrato.</p>
+    <p *ngIf="horasTotalesSemana < horasPorContrato">El trabajador ha trabajado menos horas de las pactadas por
+        contrato.</p>
+</div>

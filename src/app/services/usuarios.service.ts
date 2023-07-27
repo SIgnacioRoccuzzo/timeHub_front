@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Proyecto } from '../interfaces/proyecto.interface';
-import { Time } from '@angular/common';
+
 import { UserProyecto } from '../interfaces/userProyecto.interface';
 
 @Injectable({
@@ -76,8 +76,16 @@ export class UsuariosService {
     return localStorage.getItem('user_token') ? true : false
 
   }
-
-
+  getWeek(usuarios_Id: number, fecha_inicio: any, fecha_fin: any): any {
+    const body = {
+      "usuarios_id": usuarios_Id,
+      "fecha_inicio": fecha_inicio,
+      "fecha_fin": fecha_fin
+    }
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/getWeek`, body)
+    )
+  }
 
   getSumHora(usuarios_Id: number, fecha: any): any {
     const body = {
