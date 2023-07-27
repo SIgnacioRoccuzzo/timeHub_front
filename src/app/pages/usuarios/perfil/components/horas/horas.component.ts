@@ -6,6 +6,7 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 import * as dayjs from 'dayjs';
+import { Usuario } from 'src/app/interfaces/usuario.interface';
 
 @Component({
   selector: 'app-horas',
@@ -18,10 +19,14 @@ export class HorasComponent {
   nombresProyectos: any;
   idProyectos: any[] = []
   proyectos: Proyecto[] = []
-  usuarios_id: number = 0;
+  usuarios_id: any;
   fecha_inicio: any;
   fecha_fin: any;
-  horasTotalesSemana: number = 0;
+  horasTotalesSemana: any;
+  horasPorContrato: number = 40;
+
+
+
 
   //Services
   activatedRoute = inject(ActivatedRoute);
@@ -48,20 +53,36 @@ export class HorasComponent {
 
   }
 
-
+  /*
+  Una zona de reporte de horas semanales para el que el trabajador vea si cumple con las horas semanales pactadas por contrato, o bien va por encima o por debajo de las mismas.
+   */
 
   ngOnInit() {
     this.cargarProyectos();
+
     this.cargarFechas()
   }
+
   async cargarFechas() {
     try {
-      this.horasTotalesSemana = await this.usuariosService.getWeek(this.usuarios_id, this.fecha_inicio, this.fecha_fin)
+
+      this.usuarios_id = await this.usuariosService.getByprofile();
+      console.log(this.usuarios_id)
+      if (!this.usuarios_id || !this.fecha_inicio || !this.fecha_fin) {
+        console.log('Falta información para cargar las fechas.');
+        return;
+      }
+
+      const response = await this.usuariosService.getWeek(this.usuarios_id.id, this.fecha_inicio, this.fecha_fin);
+
+      this.horasTotalesSemana = response.total_horas_semana
       console.log(this.horasTotalesSemana)
     } catch (error) {
-      console.log('horasTotales')
+      console.log('horas que no curraste')
     }
   }
+
+
 
   async cargarProyectos() {
     try {
@@ -75,7 +96,6 @@ export class HorasComponent {
       console.error('Error al cargar los proyectos:', error);
     }
   }
-
 
 
   async onSubmit() {
@@ -97,7 +117,21 @@ export class HorasComponent {
     this.registroForm.controls['hora_salida'].setValue(dayjs().format('HH:mm'))
   }
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Proyecto } from '../interfaces/proyecto.interface';
-import { Time } from '@angular/common';
+
 import { UserProyecto } from '../interfaces/userProyecto.interface';
 
 @Injectable({

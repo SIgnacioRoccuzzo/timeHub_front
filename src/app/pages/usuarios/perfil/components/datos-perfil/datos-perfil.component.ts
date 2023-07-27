@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import * as dayjs from 'dayjs';
 import { Proyecto } from 'src/app/interfaces/proyecto.interface';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
@@ -25,6 +25,7 @@ export class DatosPerfilComponent {
 
   fecha: any
 
+
   constructor() {
 
     this.timer = new Date();
@@ -47,6 +48,7 @@ export class DatosPerfilComponent {
   }
 
   async ngOnInit() {
+
     this.usuario = await this.usuariosService.getByprofile();
     console.log(this.usuario)
 
@@ -76,15 +78,10 @@ export class DatosPerfilComponent {
     }
 
   }
+
 }
 
-/*   async cambioHora() {
-    const fecha = '2023-07-17'
-    this.activatedRoute.params.subscribe(async params =>
-      this.proyecto = await this.usuariosService.getProyectos(params['idUsuario'], fecha))
-    console.log('proyecto', this.proyecto)
 
-  } */
 
 
 
