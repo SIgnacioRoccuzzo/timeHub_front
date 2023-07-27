@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import * as dayjs from 'dayjs';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -15,7 +16,7 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class EditarUsuarioComponent {
   formulario: FormGroup;
-
+  title = inject(Title)
   router = inject(Router);
   usuarioId: number;
 
@@ -27,6 +28,7 @@ export class EditarUsuarioComponent {
   adminServicio = inject(AdministradoresService)
 
   constructor() {
+    this.title.setTitle('Editar Usuario')
     this.usuarioId = 0;
     this.formulario = new FormGroup({
       nombre: new FormControl(null, [

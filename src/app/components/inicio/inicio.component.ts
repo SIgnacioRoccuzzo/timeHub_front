@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -14,10 +15,11 @@ export class InicioComponent {
   adminServicio = inject(AdministradoresService);
 
   router = inject(Router)
-
+  title = inject(Title)
   isHomePage: boolean = false;
 
   constructor() {
+    this.title.setTitle('Inicio')
     this.router.events.subscribe((val) => {
 
       if (val instanceof NavigationEnd) {

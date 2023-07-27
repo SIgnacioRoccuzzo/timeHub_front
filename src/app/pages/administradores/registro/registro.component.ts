@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import Swal from 'sweetalert2';
@@ -14,12 +15,13 @@ export class RegistroComponent {
   formulario: FormGroup;
   adminServicio = inject(AdministradoresService);
   router = inject(Router);
-
+  title = inject(Title)
   mensajeError: boolean;
 
   showPassword: boolean = false;
 
   constructor() {
+    this.title.setTitle('Registro Admin')
     this.formulario = new FormGroup({
       nombre: new FormControl(null, [
         Validators.required,

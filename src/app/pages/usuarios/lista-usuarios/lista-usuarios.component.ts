@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
@@ -17,10 +18,11 @@ export class ListaUsuariosComponent {
   //Services
   usuariosService = inject(UsuariosService);
   router = inject(Router);
-
+  title = inject(Title)
   private darkModeService = inject(DarkModeService);
 
   constructor() {
+    this.title.setTitle('Lista de Usuarios')
     this.usuarios = [];
 
   };

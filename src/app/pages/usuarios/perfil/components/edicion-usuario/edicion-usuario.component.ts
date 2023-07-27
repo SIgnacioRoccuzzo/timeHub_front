@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
@@ -16,7 +17,7 @@ export class EdicionUsuarioComponent {
 
   router = inject(Router);
   usuarioId: number;
-
+  title = inject(Title)
   private darkModeService = inject(DarkModeService);
 
   //Services
@@ -25,6 +26,7 @@ export class EdicionUsuarioComponent {
   adminServicio = inject(AdministradoresService)
 
   constructor() {
+    this.title.setTitle('Editar mi Perfil')
     this.usuarioId = 0;
     this.formulario = new FormGroup({
       email: new FormControl(null, [

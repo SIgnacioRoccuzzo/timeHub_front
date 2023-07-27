@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import Swal from 'sweetalert2';
@@ -18,9 +19,10 @@ export class EditarProyectosComponent {
 
   proyectoId: number = 0
 
-
+  title = inject(Title)
 
   constructor() {
+    this.title.setTitle('Editar Proyectos')
     this.formulario = new FormGroup({
       nombre: new FormControl,
       descripcion: new FormControl
@@ -28,6 +30,8 @@ export class EditarProyectosComponent {
   }
 
   ngOnInit() {
+
+
     this.activatedRoute.params.subscribe(async params => {
       const proyecto = await this.proyectosService.getById(params['proyectoId']);
       this.proyectoId = params['proyectoId'];

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -14,10 +15,12 @@ export class NuevoUsuarioComponent {
   formulario: FormGroup;
   usuarioServices = inject(UsuariosService);
   router = inject(Router);
+  title = inject(Title)
 
   private darkModeService = inject(DarkModeService);
 
   constructor() {
+    this.title.setTitle('Nuevo Usuario')
     this.formulario = new FormGroup({
       // id: new FormControl(),
       nombre: new FormControl(null, [
