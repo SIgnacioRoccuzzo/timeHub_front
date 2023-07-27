@@ -34,7 +34,6 @@ export class ProyectosComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
       y: {
@@ -101,7 +100,7 @@ export class ProyectosComponent {
       if (this.registros.length !== 0) {
         for (let registro of this.registros) {
           //relleno la fecha, las horas de dicadas y el nombre de cada proyecto para rellenar la grafica por cada proyecto
-          this.fecha.push(dayjs(registro.fecha).format('DD'))
+          this.fecha.push(dayjs(registro.fecha).format('DD/MM'))
           this.horasDedicadas.push(registro.horas_dedicadas)
           this.nombre = registro.nombre
           console.log('horas extra', this.horasExtra)
@@ -116,19 +115,17 @@ export class ProyectosComponent {
               },
             ]
           }
-
+          console.log('horas dedicadas', this.horasDedicadas)
         }
+        console.log('horas dedicadas2', this.horasDedicadas)
 
+        //meto SOLO las horas extras en un array
         this.numeroHorasExtra = this.horasExtra.map((horasProyecto: any) => horasProyecto.horas_extra_total)
         console.log(this.numeroHorasExtra)
-
-
+        //aqui sumo todas las horas extras y las meto en una variable
+        this.totalHorasExtra = this.numeroHorasExtra.reduce((a, b) => a + b, 0)
         //aqui consigo la suma de todas las horas por proyecto.
         this.numeroHoras = this.horasDedicadas.reduce((a, b) => a + b, 0)
-
-        this.totalHorasExtra = this.numeroHorasExtra.reduce((a, b) => a + b, 0)
-
-
         //vacio los valores de horas y fecha para que no se acumulen a lo anterior
         this.horasDedicadas = []
         this.fecha = []
