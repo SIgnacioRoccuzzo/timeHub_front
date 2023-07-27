@@ -19,11 +19,6 @@ export class HorasComponent {
   nombresProyectos: any;
   idProyectos: any[] = []
   proyectos: Proyecto[] = []
-  usuarios_id: any;
-  fecha_inicio: any;
-  fecha_fin: any;
-  horasTotalesSemana: any;
-  horasPorContrato: number = 40;
 
 
 
@@ -53,33 +48,9 @@ export class HorasComponent {
 
   }
 
-  /*
-  Una zona de reporte de horas semanales para el que el trabajador vea si cumple con las horas semanales pactadas por contrato, o bien va por encima o por debajo de las mismas.
-   */
-
   ngOnInit() {
     this.cargarProyectos();
 
-    this.cargarFechas()
-  }
-
-  async cargarFechas() {
-    try {
-
-      this.usuarios_id = await this.usuariosService.getByprofile();
-      console.log(this.usuarios_id)
-      if (!this.usuarios_id || !this.fecha_inicio || !this.fecha_fin) {
-        console.log('Falta información para cargar las fechas.');
-        return;
-      }
-
-      const response = await this.usuariosService.getWeek(this.usuarios_id.id, this.fecha_inicio, this.fecha_fin);
-
-      this.horasTotalesSemana = response.total_horas_semana
-      console.log(this.horasTotalesSemana)
-    } catch (error) {
-      console.log('horas que no curraste')
-    }
   }
 
 

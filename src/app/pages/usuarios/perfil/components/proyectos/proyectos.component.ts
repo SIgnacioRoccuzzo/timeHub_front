@@ -30,6 +30,13 @@ export class ProyectosComponent {
   numeroHorasExtra: number[] = []
   totalHorasExtra: number = 0
 
+  usuarios_id: any;
+  fecha_inicio: any;
+  fecha_fin: any;
+  horasTotalesSemana: any;
+  horasPorContrato: number = 40;
+
+
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   barChartOptions: ChartConfiguration['options'] = {
@@ -57,7 +64,32 @@ export class ProyectosComponent {
     //recupero todos los proyectos
     this.proyectos = await this.proyectosService.getProyectos()
 
+    this.cargarFechas()
+
   }
+
+  /*
+   Una zona de reporte de horas semanales para el que el trabajador vea si cumple con las horas semanales pactadas por contrato, o bien va por encima o por debajo de las mismas.
+    */
+  async cargarFechas() {
+    try {
+
+      this.usuarios_id = await this.usuariosService.getByprofile();
+      console.log(this.usuarios_id)
+      if (!this.usuarios_id || !this.fecha_inicio || !this.fecha_fin) {
+        console.log('Falta información para cargar las fechas.');
+        return;
+      }
+
+      const response = await this.usuariosService.getWeek(this.usuarios_id.id, this.fecha_inicio, this.fecha_fin);
+
+      this.horasTotalesSemana = response.total_horas_semana
+      console.log(this.horasTotalesSemana)
+    } catch (error) {
+      console.log('horas que no curraste')
+    }
+  }
+
 
   cambioMes($event: any) {
     //recupero el valor de cada mes
@@ -80,7 +112,7 @@ export class ProyectosComponent {
           {
             data: this.horasPorProyecto[0].map((horasProyecto: any) => horasProyecto.total_horas_dedicadas),
             label: 'Todos los proyectos',
-            backgroundColor: ['#0dcaf0', '#198754', '#dc3545', '#ffc107'],
+            backgroundColor: ['#007bff', '#198754', '#dc3545', '#ffc107'],
           },
         ]
       };
@@ -111,7 +143,7 @@ export class ProyectosComponent {
             datasets: [
               {
                 data: this.horasDedicadas, label: this.nombre,
-                backgroundColor: this.horasDedicadas.map((horas, index) => (index === masDe8 && horas > 8) ? '#ff0000' : '#0dcaf0'),
+                backgroundColor: this.horasDedicadas.map((horas, index) => (index === masDe8 && horas > 8) ? '#ff0000' : '#007bff'),
               },
             ]
           }
@@ -129,11 +161,6 @@ export class ProyectosComponent {
         //vacio los valores de horas y fecha para que no se acumulen a lo anterior
         this.horasDedicadas = []
         this.fecha = []
-      } else {
-        this.barChartData = {
-          labels: [],
-          datasets: []
-        }
 
       }
 
