@@ -123,9 +123,9 @@ export class ProyectosComponent {
         this.numeroHorasExtra = this.horasExtra.map((horasProyecto: any) => horasProyecto.horas_extra_total)
         console.log(this.numeroHorasExtra)
         //aqui sumo todas las horas extras y las meto en una variable
-        this.totalHorasExtra = this.numeroHorasExtra.reduce((a, b) => a + b, 0)
+        this.totalHorasExtra = Math.round(this.numeroHorasExtra.reduce((a, b) => a + b, 0))
         //aqui consigo la suma de todas las horas por proyecto.
-        this.numeroHoras = this.horasDedicadas.reduce((a, b) => a + b, 0)
+        this.numeroHoras = Math.round(this.horasDedicadas.reduce((a, b) => a + b, 0))
         //vacio los valores de horas y fecha para que no se acumulen a lo anterior
         this.horasDedicadas = []
         this.fecha = []
