@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
@@ -13,12 +14,13 @@ export class LoginUsuariosComponent {
   formulario: FormGroup
   usuariosService = inject(UsuariosService);
   router = inject(Router);
-
+  title = inject(Title)
   mensajeError: boolean;
 
   showPassword: boolean = false;
 
   constructor() {
+    this.title.setTitle('Login Usuario')
     this.formulario = new FormGroup({
       email: new FormControl(null, [
         Validators.required

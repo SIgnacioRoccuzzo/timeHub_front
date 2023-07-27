@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/interfaces/proyecto.interface';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
@@ -17,11 +18,10 @@ export class ListaProyectosComponent {
   router = inject(Router);
 
   proyectos: Proyecto[] = []
-
-
-
+  title = inject(Title)
 
   async ngOnInit() {
+    this.title.setTitle('Lista de Proyectos')
     try {
       this.proyectos = await this.proyectosService.getProyectos()
     } catch (error) {
