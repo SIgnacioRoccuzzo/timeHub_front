@@ -2,16 +2,18 @@ section {
     background: url(../../../../assets/images/fondo_login.jpg) no-repeat;
     background-size: cover;
     background-position: 25% 30%;
-    height: 100vh;
+    min-height: 100vh;
     color: aliceblue;
+    padding: 5px;
 }
 
 section form {
-    margin: 0 auto;
+    margin: 10% auto;
     width: 25vw;
     padding: 20px;
     border: 2px solid white;
     border-radius: 10px;
+    padding: 1.25em;
 }
 
 section h2 {

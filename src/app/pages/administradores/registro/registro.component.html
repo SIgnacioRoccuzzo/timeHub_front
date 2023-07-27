@@ -1,12 +1,11 @@
 <section>
     <div class="container">
 
-        <div class="logo">
-            <i>Logo</i>
-            <h2>Time Hub</h2>
-        </div>
-
         <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+            <h2>Time Hub</h2>
+            <h3>Registro Admin</h3>
+
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
                 <input type="text" class="form-control" formControlName="nombre">
