@@ -40,19 +40,26 @@
     </div>
     <div class="informacion col-6">
         <div class="card text-bg-light mb-3" style="width: 95%;">
-            <div class="card-header">TimeHub</div>
+            <div class="card-header"><strong>Horas totales en la semana</strong></div>
             <div class="card-body">
-                <h5 class="card-title">Horas totales en el mes</h5>
-                <p class="card-text">el cómputo general de tus horas en todo el mes, es de
+                <p class="card-text">el cómputo general de tus horas en toda la semana, es de
                     <strong>{{numeroHoras}}</strong>
                 </p>
             </div>
         </div>
         <div class="card text-bg-light mb-3" style="width: 95%;">
-            <div class="card-header">TimeHub</div>
+            <div class="card-header"><strong>Horas dedicadas al mes</strong></div>
             <div class="card-body">
-                <h5 class="card-title">Horas extra</h5>
-                <p class="card-text">El número de horas extra hechas este mes, es de
+                <p class="card-text">el cómputo de horas en todo el mes en el proyecto <strong>{{this.nombre}}</strong>,
+                    es de
+                    <strong>{{numeroHoras}}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="card text-bg-light mb-3" style="width: 95%;">
+            <div class="card-header"><strong>Horas extra</strong> </div>
+            <div class="card-body">
+                <p class="card-text">El número de horas extra, es de
                     <strong>{{totalHorasExtra}}</strong> ,
                     póngase en contacto con la empresa para decidir si quiere disfrutarlas, o que le sean abonadas
                 </p>
