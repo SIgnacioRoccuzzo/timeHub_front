@@ -123,6 +123,7 @@ export class ProyectosComponent {
         datasets: [
           {
             data: this.horasExtra.map((horasProyecto: any) => horasProyecto.horas_extra_total),
+            label: 'Horas extra',
             backgroundColor: '#ff0000'
           },
         ]
