@@ -35,4 +35,10 @@ export class AdministradoresService {
       this.httpServicio.get<Administrador | any>(`${this.baseUrl}/profile`)
     );
   };
+
+
+
+  loginInicio(): boolean {
+    return localStorage.getItem('admins_token') ? false : true
+  }
 }

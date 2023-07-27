@@ -1,3 +1,7 @@
+section {
+    min-height: 100vh;
+}
+
 table,
 th {
     opacity: 0.7;

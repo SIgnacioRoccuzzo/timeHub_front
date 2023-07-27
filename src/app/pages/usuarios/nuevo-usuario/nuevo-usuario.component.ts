@@ -112,8 +112,7 @@ export class NuevoUsuarioComponent {
     })
 
     // Inserción correcta
-    // localStorage.removeItem('admins_token');
-    // this.router.navigate(['/login/user']);
+    this.router.navigate(['/usuarios']);
 
   }
 

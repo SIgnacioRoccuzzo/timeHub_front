@@ -69,7 +69,6 @@ export class DatosPerfilComponent {
     console.log(this.usuario.email);
     const correo = this.usuario.email
 
-
     if (horas_dedicadas > 8) {
       const res = await this.sendMailService.sendMail(correo);
       console.log(res);
