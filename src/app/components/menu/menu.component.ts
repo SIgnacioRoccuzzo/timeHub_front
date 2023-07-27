@@ -12,7 +12,7 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class MenuComponent {
 
-
+  showButton: boolean = true;
   usuariosService = inject(UsuariosService)
   adminServicio = inject(AdministradoresService);
 
@@ -23,6 +23,7 @@ export class MenuComponent {
   isHomePage: boolean = false;
 
   constructor() {
+    this.showButton = !this.usuariosService.isHomePage();
     this.router.events.subscribe((val) => {
 
       if (val instanceof NavigationEnd) {

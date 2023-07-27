@@ -5,6 +5,7 @@ import { Usuario } from '../interfaces/usuario.interface';
 import { Proyecto } from '../interfaces/proyecto.interface';
 
 import { UserProyecto } from '../interfaces/userProyecto.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UsuariosService {
   private httpClient = inject(HttpClient)
   private baseUrl: string;
 
-
+  router = inject(Router)
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/usuarios'
   };
@@ -104,6 +105,10 @@ export class UsuariosService {
 
   loginInicioUser(): boolean {
     return localStorage.getItem('user_token') ? false : true
+  }
+  isHomePage(): boolean {
+    const currentUrl = this.router.url;
+    return currentUrl === '/usuarios/perfil';
   }
 
 }
