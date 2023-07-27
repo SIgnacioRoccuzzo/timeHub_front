@@ -10,6 +10,9 @@ import { UserProyecto } from '../interfaces/userProyecto.interface';
   providedIn: 'root'
 })
 export class UsuariosService {
+  isLogged(): any {
+    throw new Error('Method not implemented.');
+  }
   private httpClient = inject(HttpClient)
   private baseUrl: string;
 
@@ -96,6 +99,11 @@ export class UsuariosService {
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/getTime`, body)
     )
+  }
+
+
+  loginInicioUser(): boolean {
+    return localStorage.getItem('user_token') ? false : true
   }
 
 }

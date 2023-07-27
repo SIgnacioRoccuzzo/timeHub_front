@@ -1,4 +1,5 @@
-<nav *ngIf="adminServicio.isLogged() || usuariosService.isLoggedUser()" [ngClass]="{'dark-mode':darkMode}">
+<nav *ngIf="adminServicio.isLogged() || usuariosService.isLoggedUser()"
+        [ngClass]="{'dark-mode':darkMode, 'bgWhite':isHomePage}">
         <div class="container">
                 <header class="d-flex flex-wrap justify-content-center py-3 pb-4">
                         <a [routerLink]="['/inicio']" *ngIf="adminServicio.isLogged() || usuariosService.isLoggedUser()"
@@ -6,7 +7,7 @@
                                 <svg class="bi me-2" width="40" height="32">
                                         <use xlink:href="#bootstrap" />
                                 </svg>
-                                <span class="fs-4" [ngClass]="{'dark-mode':darkMode}">TimeHube</span>
+                                <span class="fs-4 tiemhub">TimeHub</span>
                         </a>
 
                         <ul class="nav nav-pills">
@@ -50,12 +51,15 @@
 
 
                                 <!-- boton de modo oscuro -->
-                                <li class="nav-item"><a class="nav-link" (click)="toggleDarkMode()"
-                                                *ngIf="this.darkModeService.darkMode">☀</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" (click)="toggleDarkMode()"
-                                                *ngIf="!this.darkModeService.darkMode">🌙</a>
-                                </li>
+                                <div *ngIf=" !isHomePage">
+                                        <li class="nav-item"><a class="nav-link" (click)="toggleDarkMode()"
+                                                        *ngIf="this.darkModeService.darkMode">☀</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" (click)="toggleDarkMode()"
+                                                        *ngIf="!this.darkModeService.darkMode">🌙</a>
+                                        </li>
+                                </div>
+
 
                         </ul>
                 </header>

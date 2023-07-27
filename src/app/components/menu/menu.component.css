@@ -1,0 +1,8 @@
+.bgWhite {
+    background-color: white;
+}
+
+.tiemhub {
+    color: white;
+    text-shadow: 0 0 10px lightblue, 0 0 20px lightblue, 0 0 30px lightblue, 0 0 40px lightblue;
+}

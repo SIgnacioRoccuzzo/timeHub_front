@@ -19,12 +19,11 @@ import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edic
 const routes: Routes = [
 
 
+  { path: 'proyectos/editar/:proyectoId', component: EditarProyectosComponent, canActivate: [loginGuard] },
   {
     path: 'login/user', component: LoginUsuariosComponent,
-    canActivate: [LoginUserGuard]
+    canActivate: [LoginAdminGuard, LoginUserGuard]
   },
-  { path: 'proyectos/editar/:proyectoId', component: EditarProyectosComponent, canActivate: [loginGuard] },
-  { path: 'login/user', component: LoginUsuariosComponent },
   { path: 'usuarios/nuevo', component: NuevoUsuarioComponent, canActivate: [loginGuard] },
   { path: 'proyectos/nuevo', component: NuevoProyectoComponent, canActivate: [loginGuard] },
   { path: 'usuarios', component: ListaUsuariosComponent, canActivate: [loginGuard] },
@@ -34,12 +33,12 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   {
     path: 'login', component: LoginComponent,
-    canActivate: [LoginAdminGuard]
+    canActivate: [LoginAdminGuard, LoginUserGuard]
   },
-  { path: 'inicio', component: InicioComponent },
+  { path: '', component: InicioComponent },
   { path: 'usuarios/editar/:usuarioId', component: EdicionUsuarioComponent },
 
-
+  { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
 @NgModule({

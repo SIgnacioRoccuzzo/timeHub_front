@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AdministradoresService } from 'src/app/services/administradores.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 
@@ -19,6 +19,24 @@ export class MenuComponent {
   router = inject(Router);
 
   darkModeService = inject(DarkModeService);
+
+  isHomePage: boolean = false;
+
+  constructor() {
+    this.router.events.subscribe((val) => {
+
+      if (val instanceof NavigationEnd) {
+        console.log(this.router.url);
+
+        if (this.router.url === '/') {
+          this.isHomePage = true
+        } else {
+          this.isHomePage = false
+        }
+      }
+
+    })
+  }
 
   onClickLogout() {
     localStorage.removeItem('admins_token');

@@ -66,6 +66,15 @@
 }
 
 
-main {
+main,
+.bgWhite {
     background-color: white;
+}
+
+.menu ul li {
+    color: white;
+}
+
+.timehub {
+    color: black;
 }
