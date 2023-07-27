@@ -1,5 +1,23 @@
 section {
     min-height: 100vh;
+    opacity: 1.5;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid green;
+}
+
+
+input.ng-invalid.ng-touched {
+    border: 2px solid hotpink;
+}
+
+.error {
+    color: hotpink;
+}
+
+.error {
+    color: hotpink;
 }
 
 form {
@@ -7,4 +25,12 @@ form {
     background-color: white;
     color: black;
     opacity: .7;
+}
+
+h4,
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin: 20px !important;
 }
