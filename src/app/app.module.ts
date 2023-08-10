@@ -18,8 +18,6 @@ import { ProyectosComponent } from './pages/usuarios/perfil/components/proyectos
 import { HorasComponent } from './pages/usuarios/perfil/components/horas/horas.component';
 import { NgChartsModule } from 'ng2-charts';
 
-import { InicioComponent } from './components/inicio/inicio.component';
-
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { ListaProyectosComponent } from './pages/administradores/lista-proyectos/lista-proyectos.component';
 import { EditarProyectosComponent } from './pages/administradores/editar-proyectos/editar-proyectos.component';
@@ -40,7 +38,6 @@ import { EdicionUsuarioComponent } from './pages/usuarios/perfil/components/edic
     DatosPerfilComponent,
     ProyectosComponent,
     HorasComponent,
-    InicioComponent,
     LoginUsuariosComponent,
     ListaProyectosComponent,
     EditarProyectosComponent,

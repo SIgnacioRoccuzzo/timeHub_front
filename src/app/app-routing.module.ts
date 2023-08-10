@@ -6,7 +6,6 @@ import { EditarUsuarioComponent } from './pages/usuarios/editar-usuario/editar-u
 import { RegistroComponent } from './pages/administradores/registro/registro.component';
 import { LoginComponent } from './pages/administradores/login/login.component';
 import { LoginAdminGuard, LoginUserGuard } from './guards/login-admin.guards';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { loginGuard, loginGuardUser } from './guards/login.guards';
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './pages/usuarios/perfil/perfil.component';
@@ -35,10 +34,9 @@ const routes: Routes = [
     path: 'login', component: LoginComponent,
     canActivate: [LoginAdminGuard, LoginUserGuard]
   },
-  { path: '', component: InicioComponent },
   { path: 'usuarios/editar/:usuarioId', component: EdicionUsuarioComponent },
 
-  { path: '**', pathMatch: 'full', redirectTo: '' },
+  { path: '**', pathMatch: 'full', redirectTo: 'login' },
 ];
 
 @NgModule({
