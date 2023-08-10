@@ -19,7 +19,8 @@
 
     </select>
     <select (change)="cambioProyecto($event)" class="form-select form-select-sm " aria-label=" .form-select-lg example">
-        <option value="0">selecciona un proyecto</option>
+        <option value="">selecciona un proyecto</option>
+        <option value="0">Todos los proyectos</option>
         <option [value]=proyecto.id *ngFor="let proyecto of proyectos ">
             {{proyecto.nombre}}</option>
         <option value="extra">Horas extra</option>
@@ -71,7 +72,7 @@
             <div class="card-header"><strong>Horas extra</strong> </div>
             <div class="card-body">
                 <p class="card-text">El número de horas extra, es de
-                    <strong>{{totalHorasExtra}}</strong>
+                    <strong style="color:red">{{totalHorasExtra}}</strong>
                 </p>
             </div>
         </div>

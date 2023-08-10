@@ -60,12 +60,27 @@ export class ProyectosComponent {
     datasets: []
   }
 
+
+
   async ngOnInit() {
+    this.horasPorProyecto = await this.proyectosService.getHour(7)
     //recupero todos los proyectos
     this.proyectos = await this.proyectosService.getProyectos()
 
     this.cargarFechas()
 
+
+    this.barChartData = {
+      labels: this.proyectos.map(proyecto => proyecto.nombre),
+      datasets: [
+        {
+          data: this.horasPorProyecto[0].map((horasProyecto: any) => horasProyecto.total_horas_dedicadas),
+          label: 'Todos los proyectos',
+          backgroundColor: ['#007bff', '#198754', '#dc3545', '#ffc107'],
+        },
+      ]
+    }
+    console.log('horas dedicadas', this.horasDedicadas)
   }
 
   /*
